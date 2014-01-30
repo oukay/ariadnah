@@ -7,18 +7,18 @@
 	</head>
 
 	<body>
-		<% for(var i = 0; i < 98; i++) { %>
-			<canvas class='loading' width='100' height='100'></canvas>
-		<% } %>
+		<div class='full-width'>
+			<canvas class='loading' width='100' height='100' />
+		</div>
 	</body>
 
 	<script>
-		var canvases = document.getElementsByClassName('loading');
 		var loaders = [];
 
+		var canvases = document.getElementsByClassName('loading');
 		for(var i = 0; i < canvases.length; i++) {
 			loaders.push(new Loader(canvases[i]));
-			setInterval('loaders[' + i + '].run()', 100);
+			setInterval('loaders[' + i + '].run()', 50);
 		}
 	</script>
 </html>

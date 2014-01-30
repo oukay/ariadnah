@@ -10,7 +10,7 @@ var Loader = function(canvas) {
 	var maxAngle = 2.0;
 
 	// Color
-	var color = '#999999';
+	var color = '#bbbbbb';
 
 	// Which angle to start
 	var shift = minAngle;
