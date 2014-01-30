@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<script src='/javascripts/Loader.js'></script>
+	</head>
+
+	<body>
+		<% for(var i = 0; i < 98; i++) { %>
+			<canvas class='loading' width='100' height='100'></canvas>
+		<% } %>
+	</body>
+
+	<script>
+		var canvases = document.getElementsByClassName('loading');
+		var loaders = [];
+
+		for(var i = 0; i < canvases.length; i++) {
+			loaders.push(new Loader(canvases[i]));
+			setInterval('loaders[' + i + '].run()', 100);
+		}
+	</script>
+</html>
