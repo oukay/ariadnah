@@ -1,11 +1,43 @@
+@border-color: #aaaaaa;
+@background-color: #eeeeee;
+/**
+ * FIXME: Hardcoded 60px for top width. Replace it with calculable value
+ */
+@header-size: 60px;
+
 body {
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px;
+	font-family: courier, monospace;
+	color: @border-color;
 }
 
-div.full-width {
-	text-align: center;
-	height: 5%;
+div.header,
+div.footer {
+	height: @header-size;
+	border-width: 2px;
+	border-style: solid;
+	border-color: @border-color;
+	background-color: @background-color;
+}
+
+div.header-fixed {
+	position: fixed;
+	top: 0px;
 	width: 100%;
-	background-color: #eeeeee;
+}
+
+div.footer-fixed {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+
+.button-header {
+	width: @header-size;
+	height: @header-size;
+	border-right: 1px solid;
+	border-color: @border-color;
+	background-color: @background-color;
 }

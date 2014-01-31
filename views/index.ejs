@@ -3,22 +3,35 @@
 	<head>
 		<title><%= title %></title>
 		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<script src='/javascripts/Global.js'></script>
 		<script src='/javascripts/Loader.js'></script>
+		<script src='/javascripts/Hamburger.js'></script>
 	</head>
 
-	<body>
-		<div class='full-width'>
-			<canvas class='loading' width='100' height='100' />
-		</div>
+	<body id='body'>
+		<div id='header-div' class='header header-fixed'></div>
+
+		<div class='header'></div>
+		<div id='x'></div>
+
+		<div id='footer-div' class='footer footer-fixed'></div>
 	</body>
 
 	<script>
-		var loaders = [];
+		var scriptLoadingTime = Date.now();
 
-		var canvases = document.getElementsByClassName('loading');
-		for(var i = 0; i < canvases.length; i++) {
-			loaders.push(new Loader(canvases[i]));
-			setInterval('loaders[' + i + '].run()', 50);
+		// Create Hamburger
+		new Hamburger(NONE).addClass('button-header').attachTo(document.getElementById('header-div')).draw();
+
+		// Create Loaders;
+		var loaders = [];
+		for (var i = 0; i < 50; i++) {
+			loaders.push(new Loader(NONE).addClass('icon-loader').attachTo(document.getElementById('x')));
+			setInterval('loaders[' + i + '].draw()', 50);
 		}
+
+		scriptLoadingTime = Date.now() - scriptLoadingTime;
+		document.getElementById('footer-div').appendChild(
+				document.createTextNode('Javascript loading time: ' + scriptLoadingTime + 'ms'));
 	</script>
 </html>
