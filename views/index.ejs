@@ -10,8 +10,8 @@
 
 	<body id='body'>
 		<div id='header-div' class='header header-fixed'></div>
-
 		<div class='header'></div>
+
 		<div id='x'></div>
 
 		<div id='footer-div' class='footer footer-fixed'></div>
@@ -21,14 +21,16 @@
 		var scriptLoadingTime = Date.now();
 
 		// Create Hamburger
-		new Hamburger(NONE).addClass('button-header').attachTo(document.getElementById('header-div')).draw();
+		new Hamburger(NONE).addClass('button-header button-left').attachTo(document.getElementById('header-div')).draw();
 
 		// Create Loaders;
+		/*
 		var loaders = [];
-		for (var i = 0; i < 50; i++) {
+		for (var i = 0; i < 1; i++) {
 			loaders.push(new Loader(NONE).addClass('icon-loader').attachTo(document.getElementById('x')));
 			setInterval('loaders[' + i + '].draw()', 50);
 		}
+		*/
 
 		scriptLoadingTime = Date.now() - scriptLoadingTime;
 		document.getElementById('footer-div').appendChild(

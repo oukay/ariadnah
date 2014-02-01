@@ -17,21 +17,17 @@ var Hamburger = function(_canvas) {
 	canvas.height = size;
 
 	// Color
-	var color = '#aaaaaa';
-	// Space between chunks
-	var space = size / 20;
+	var color = '#b7b7b7';
 	// Number of chunks
 	var chunks = 3;
 	// Chunk width and height
 	var chunkWidth = size / 2;
 	var chunkHeight = size / 10;
+	// Space between chunks
+	var space = chunkHeight / 2;
 	// Chunk left and top
 	var chunkLeft = (canvas.width - chunkWidth) / 2;
-	/**
-	 * FIXME: There is a bug in calculation. However hamburger is displayed correctly
-	 * @type {number}
-	 */
-	var chunkTop = chunks * chunkHeight;
+	var chunkTop = (canvas.height - ((chunks * chunkHeight) + (space * 2))) / 2;
 
 	// Drawing context
 	var context = canvas.getContext('2d');
@@ -127,6 +123,18 @@ Hamburger.prototype.attachTo = function(_element) {
  */
 Hamburger.prototype.attach = function(_element) {
 	this.self.getCanvas().appendChild(_element);
+
+	return this.self;
+};
+
+/**
+ * Add event listener to hamburger
+ * @param _event
+ * @param _callback
+ * @returns {Hamburger|*}
+ */
+Hamburger.prototype.addEventListener = function(_event, _callback) {
+	this.self.getCanvas().addEventListener(_event, _callback);
 
 	return this.self;
 };

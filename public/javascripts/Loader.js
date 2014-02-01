@@ -21,7 +21,7 @@ var Loader = function(_canvas) {
 	var maxAngle = 2.0;
 
 	// Color
-	var color = '#aaaaaa';
+	var color = '#b7b7b7';
 
 	// Which angle to start
 	var shift = minAngle;
@@ -151,6 +151,18 @@ Loader.prototype.attachTo = function(_element) {
  */
 Loader.prototype.attach = function(_element) {
 	this.self.getCanvas().appendChild(_element);
+
+	return this.self;
+};
+
+/**
+ * Add event listener to loader
+ * @param _event
+ * @param _callback
+ * @returns {Hamburger|*}
+ */
+Loader.prototype.addEventListener = function(_event, _callback) {
+	this.self.getCanvas().addEventListener(_event, _callback);
 
 	return this.self;
 };

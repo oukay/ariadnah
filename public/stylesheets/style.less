@@ -1,5 +1,9 @@
-@border-color: #aaaaaa;
-@background-color: #eeeeee;
+@border-color: #b7b7b7;
+@background-color: #f9f9f9;
+@hover-background-color: #d9d9d9;
+
+@border-width: 2px;
+
 /**
  * FIXME: Hardcoded 60px for top width. Replace it with calculable value
  */
@@ -16,7 +20,7 @@ body {
 div.header,
 div.footer {
 	height: @header-size;
-	border-width: 2px;
+	border-width: @border-width;
 	border-style: solid;
 	border-color: @border-color;
 	background-color: @background-color;
@@ -37,7 +41,24 @@ div.footer-fixed {
 .button-header {
 	width: @header-size;
 	height: @header-size;
-	border-right: 1px solid;
 	border-color: @border-color;
 	background-color: @background-color;
+}
+.button-left {
+	border-right: @border-width solid;
+	float: left;
+}
+.button-right {
+	border-left: @border-width solid;
+	float: right;
+}
+.button-header:hover {
+	cursor: pointer;
+	background-color: @hover-background-color;
+}
+
+.icon-loader {
+	display: block;
+	width: 100px;
+	height: 100px;
 }

@@ -6,15 +6,15 @@ body {
   padding: 0px;
   font-size: 12px;
   font-family: courier, monospace;
-  color: #aaaaaa;
+  color: #b7b7b7;
 }
 div.header,
 div.footer {
   height: 60px;
   border-width: 2px;
   border-style: solid;
-  border-color: #aaaaaa;
-  background-color: #eeeeee;
+  border-color: #b7b7b7;
+  background-color: #f9f9f9;
 }
 div.header-fixed {
   position: fixed;
@@ -29,7 +29,23 @@ div.footer-fixed {
 .button-header {
   width: 60px;
   height: 60px;
-  border-right: 1px solid;
-  border-color: #aaaaaa;
-  background-color: #eeeeee;
+  border-color: #b7b7b7;
+  background-color: #f9f9f9;
+}
+.button-left {
+  border-right: 2px solid;
+  float: left;
+}
+.button-right {
+  border-left: 2px solid;
+  float: right;
+}
+.button-header:hover {
+  cursor: pointer;
+  background-color: #d9d9d9;
+}
+.icon-loader {
+  display: block;
+  width: 100px;
+  height: 100px;
 }
