@@ -4,16 +4,18 @@
 		<title><%= title %></title>
 		<link rel='stylesheet' href='/stylesheets/style.css' />
 		<script src='/javascripts/Global.js'></script>
-		<script src='/javascripts/Loader.js'></script>
 		<script src='/javascripts/Hamburger.js'></script>
+		<script src='/javascripts/Loader.js'></script>
+		<script src='/javascripts/MosaicElement.js'></script>
 	</head>
 
 	<body id='body'>
 		<div id='header-div' class='header header-fixed'></div>
-		<div class='header'></div>
+		<div id='header-div-dummy' class='header-dummy'></div>
 
-		<div id='x'></div>
+		<div id='body-div' class='body'></div>
 
+		<div id='footer-div-dummy' class='footer-dummy'></div>
 		<div id='footer-div' class='footer footer-fixed'></div>
 	</body>
 
@@ -21,16 +23,20 @@
 		var scriptLoadingTime = Date.now();
 
 		// Create Hamburger
-		new Hamburger(NONE).addClass('button-header button-left').attachTo(document.getElementById('header-div')).draw();
+		new Hamburger(NONE).addClass('button-header button-left hoverable').attachTo(document.getElementById('header-div')).draw();
 
-		// Create Loaders;
-		/*
+		// Create MosaicElements
+		var mosaicElements = [];
+		for (var i = 0; i < 10; i++) {
+			mosaicElements.push(new MosaicElement(NONE).addClass('mosaic-element hoverable').attachTo(document.getElementById('body-div')).draw());
+		}
+
+		// Create Loaders
 		var loaders = [];
-		for (var i = 0; i < 1; i++) {
-			loaders.push(new Loader(NONE).addClass('icon-loader').attachTo(document.getElementById('x')));
+		for (var i = 0; i < 0; i++) {
+			loaders.push(new Loader(NONE).addClass('icon-loader').attachTo(document.getElementById('body-div')));
 			setInterval('loaders[' + i + '].draw()', 50);
 		}
-		*/
 
 		scriptLoadingTime = Date.now() - scriptLoadingTime;
 		document.getElementById('footer-div').appendChild(

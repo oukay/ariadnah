@@ -100,6 +100,7 @@ Hamburger.prototype.draw = function() {
 /**
  * Add css class to inner element
  * @param _class
+ * @returns {Hamburger|*}
  */
 Hamburger.prototype.addClass = function(_class) {
 	this.self.getCanvas().className += _class;
@@ -110,6 +111,7 @@ Hamburger.prototype.addClass = function(_class) {
 /**
  * Attach hamburger to element
  * @param _element
+ * @returns {Hamburger|*}
  */
 Hamburger.prototype.attachTo = function(_element) {
 	_element.appendChild(this.self.getCanvas());
@@ -120,6 +122,7 @@ Hamburger.prototype.attachTo = function(_element) {
 /**
  * Attach element to hamburger
  * @param _element
+ * @returns {Hamburger|*}
  */
 Hamburger.prototype.attach = function(_element) {
 	this.self.getCanvas().appendChild(_element);

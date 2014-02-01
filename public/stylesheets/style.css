@@ -1,51 +1,95 @@
 /**
- * FIXME: Hardcoded 60px for top width. Replace it with calculable value
+ * FIXME: Hardcoded values need to be fixed
  */
 body {
   margin: 0px;
   padding: 0px;
   font-size: 12px;
   font-family: courier, monospace;
-  color: #b7b7b7;
 }
+/**
+ * body
+ */
+.body {
+  padding: 25px;
+}
+/**
+ * header/footer
+ */
 div.header,
 div.footer {
-  height: 60px;
   border-width: 2px;
   border-style: solid;
   border-color: #b7b7b7;
   background-color: #f9f9f9;
 }
 div.header-fixed {
+  height: 60px;
   position: fixed;
   top: 0px;
   width: 100%;
 }
 div.footer-fixed {
+  height: 30px;
   position: fixed;
   bottom: 0px;
   width: 100%;
 }
+div.header-dummy {
+  height: 60px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ffffff;
+  background-color: #ffffff;
+}
+div.footer-dummy {
+  height: 30px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ffffff;
+  background-color: #ffffff;
+}
+/**
+ * buttons
+ */
 .button-header {
   width: 60px;
   height: 60px;
-  border-color: #b7b7b7;
   background-color: #f9f9f9;
 }
 .button-left {
-  border-right: 2px solid;
+  border-right: 2px;
+  border-right-style: solid;
+  border-right-color: #b7b7b7;
   float: left;
 }
 .button-right {
-  border-left: 2px solid;
+  border-left: 2px;
+  border-left-style: solid;
+  border-left-color: #b7b7b7;
   float: right;
 }
-.button-header:hover {
+.hoverable:hover {
   cursor: pointer;
   background-color: #d9d9d9;
 }
+/**
+ * FIXME
+ */
 .icon-loader {
   display: block;
   width: 100px;
   height: 100px;
+}
+/**
+ * FIXME
+ */
+.mosaic-element {
+  margin: 25px;
+  display: inline-block;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #b7b7b7;
+  width: 250px;
+  height: 250px;
 }

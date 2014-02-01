@@ -1,64 +1,114 @@
-@border-color: #b7b7b7;
-@background-color: #f9f9f9;
-@hover-background-color: #d9d9d9;
+@element-border-color: #b7b7b7;
+@element-background-color: #f9f9f9;
+@element-background-color-on-hover: #d9d9d9;
+@background-color: #ffffff;
 
 @border-width: 2px;
 
 /**
- * FIXME: Hardcoded 60px for top width. Replace it with calculable value
+ * FIXME: Hardcoded values need to be fixed
  */
 @header-size: 60px;
+@footer-size: 30px;
+@mosaic-element-margin: 25px;
+@body-font-size: 12px;
+@body-font-family: courier, monospace;
 
 body {
 	margin: 0px;
 	padding: 0px;
-	font-size: 12px;
-	font-family: courier, monospace;
-	color: @border-color;
+	font-size: @body-font-size;
+	font-family: @body-font-family;
 }
 
+/**
+ * body
+ */
+.body {
+	padding: @mosaic-element-margin;
+}
+
+/**
+ * header/footer
+ */
 div.header,
 div.footer {
-	height: @header-size;
 	border-width: @border-width;
 	border-style: solid;
-	border-color: @border-color;
-	background-color: @background-color;
+	border-color: @element-border-color;
+	background-color: @element-background-color;
 }
-
 div.header-fixed {
+	height: @header-size;
 	position: fixed;
 	top: 0px;
 	width: 100%;
 }
-
 div.footer-fixed {
+	height: @footer-size;
 	position: fixed;
 	bottom: 0px;
 	width: 100%;
 }
+div.header-dummy {
+	height: @header-size;
+	border-width: @border-width;
+	border-style: solid;
+	border-color: @background-color;
+	background-color: @background-color;
+}
+div.footer-dummy {
+	height: @footer-size;
+	border-width: @border-width;
+	border-style: solid;
+	border-color: @background-color;
+	background-color: @background-color;
+}
 
+/**
+ * buttons
+ */
 .button-header {
 	width: @header-size;
 	height: @header-size;
-	border-color: @border-color;
-	background-color: @background-color;
+	background-color: @element-background-color;
 }
 .button-left {
-	border-right: @border-width solid;
+	border-right: @border-width;
+	border-right-style: solid;
+	border-right-color: @element-border-color;
 	float: left;
 }
 .button-right {
-	border-left: @border-width solid;
+	border-left: @border-width;
+	border-left-style: solid;
+	border-left-color: @element-border-color;
 	float: right;
 }
-.button-header:hover {
+
+.hoverable:hover {
 	cursor: pointer;
-	background-color: @hover-background-color;
+	background-color: @element-background-color-on-hover;
 }
 
+/**
+ * FIXME
+ */
 .icon-loader {
 	display: block;
 	width: 100px;
 	height: 100px;
+}
+
+/**
+ * FIXME
+ */
+.mosaic-element {
+	margin: @mosaic-element-margin;
+	display: inline-block;
+	border-width: @border-width;
+	border-style: solid;
+	border-color: @element-border-color;
+	width: 250px;
+	height: 250px;
 }

@@ -128,6 +128,7 @@ Loader.prototype.draw = function() {
 /**
  * Add css class to inner element
  * @param _class
+ * @returns {Loader|*}
  */
 Loader.prototype.addClass = function(_class) {
 	this.self.getCanvas().className += _class;
@@ -138,6 +139,7 @@ Loader.prototype.addClass = function(_class) {
 /**
  * Attach loader to element
  * @param _element
+ * @returns {Loader|*}
  */
 Loader.prototype.attachTo = function(_element) {
 	_element.appendChild(this.self.getCanvas());
@@ -148,6 +150,7 @@ Loader.prototype.attachTo = function(_element) {
 /**
  * Attach element to loader
  * @param _element
+ * @returns {Loader|*}
  */
 Loader.prototype.attach = function(_element) {
 	this.self.getCanvas().appendChild(_element);
@@ -159,7 +162,7 @@ Loader.prototype.attach = function(_element) {
  * Add event listener to loader
  * @param _event
  * @param _callback
- * @returns {Hamburger|*}
+ * @returns {Loader|*}
  */
 Loader.prototype.addEventListener = function(_event, _callback) {
 	this.self.getCanvas().addEventListener(_event, _callback);
