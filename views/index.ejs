@@ -28,8 +28,9 @@
 
 		var mosaicElements = [];
 		var getNextMosaicElementsSuccess = function(_element, _response) {
-			if (_response.status === 'ok') {
-				_element.getNext(getNextMosaicElement).stopLoader().draw();
+			_element.stopLoader().draw();
+			if (!_response.course.last) {
+				_element.getNext(getNextMosaicElement);
 			}
 		};
 		var getNextMosaicElementsError = function(_element, _response) {

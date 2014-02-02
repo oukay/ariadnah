@@ -40,13 +40,13 @@ app.configure(function () {
 		var url = '/course/';
 		var i = parseInt(req.url.replace(url, ''));
 
-		if (i < 12) {
-			res.send({status: 'ok',
-				course : {index: i, name: 'test'}
-			});
-		} else {
-			res.send({status: 'end'});
-		}
+		res.send({
+			course :{
+				index: i,
+				name: 'test',
+				last: i < 12
+			}
+		});
 	});
 });
 
