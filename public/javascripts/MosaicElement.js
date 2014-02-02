@@ -2,25 +2,56 @@
  * Created by OuKay(ouen.kay.gmail.com)
  * Creates Mosaic Element
  */
-var MosaicElement = function(_canvas) {
+var MosaicElement = function(_canvas, _loader) {
+	// Index of current mosaic element in chain of mosaic elements
+	var index = 0;
 	var canvas = _canvas;
-	var size = 250;
 	var expectedTagName = 'canvas';
 
 	// Check if it is really canvas passed
 	if (!canvas || canvas.tagName.toLowerCase() != expectedTagName) {
 		canvas = document.createElement(expectedTagName);
+		canvas.width = 250;
+		canvas.height = canvas.width;
 	}
-	canvas.width = size;
-	canvas.height = size;
 
-	// Color
-	var color = '#f9f9f9';
+	var loader = _loader;
+	// Check if it is really canvas passed
+	if (!loader || !loader instanceof Loader) {
+		loader = new Loader(canvas);
+	}
+
+	// Interval for loader
+	var interval = NONE;
 
 	// Drawing context
 	var context = canvas.getContext('2d');
-	context.lineWidth = 0;
-	context.fillStyle = color;
+
+	this.setIndex = function(_index) {
+		index = _index;
+
+		return this.self;
+	}
+
+	this.getIndex = function() {
+		return index;
+	}
+
+	this.setInterval = function(_interval) {
+		interval = _interval;
+
+		return this.self;
+	}
+
+	this.getInterval = function() {
+		return interval;
+	}
+
+	this.getNext = function(_callback) {
+		_callback(this.self.getIndex() + 1);
+
+		return this.self;
+	};
 
 	this.getContext = function() {
 		return context;
@@ -38,6 +69,10 @@ var MosaicElement = function(_canvas) {
 		return canvas;
 	};
 
+	this.getLoader = function() {
+		return loader;
+	};
+
 	this.self = this;
 };
 
@@ -52,7 +87,31 @@ MosaicElement.prototype.draw = function() {
 
 	// Draw
 	// TODO: Content need to be drawn
+
+	return this.self;
 };
+
+/**
+ * Start loader
+ */
+MosaicElement.prototype.startLoader = function() {
+	var that = this.self;
+
+	this.self.setInterval(setInterval(function() {
+		that.getLoader().draw();
+	}, 50));
+
+	return that;
+}
+
+/**
+ * Stop loader
+ */
+MosaicElement.prototype.stopLoader = function() {
+	clearInterval(this.self.getInterval());
+
+	return this.self;
+}
 
 /**
  * Add css class to inner element

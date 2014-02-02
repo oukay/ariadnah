@@ -1,6 +1,5 @@
 // Modules
 var express = require('express');
-var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var lessMiddleware = require('less-middleware');
@@ -26,7 +25,29 @@ app.configure(function () {
 
 	app.use(express.static(publicPath));
 
-	app.get('*', routes.index);
+	/*
+	 * TODO: Move views to separate files
+	 * app.get('/', routes.index);
+	 * var routes = require('./routes');
+	 */
+	// Index page
+	app.get('/', function(req, res) {
+		res.render('index', {'title': 'ariadnah'});
+	});
+
+	// Get course
+	app.get('/course/:i', function(req, res) {
+		var url = '/course/';
+		var i = parseInt(req.url.replace(url, ''));
+
+		if (i < 12) {
+			res.send({status: 'ok',
+				course : {index: i, name: 'test'}
+			});
+		} else {
+			res.send({status: 'end'});
+		}
+	});
 });
 
 http.createServer(app).listen(app.get('port'), function() {

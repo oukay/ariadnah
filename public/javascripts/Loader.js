@@ -6,15 +6,14 @@
  */
 var Loader = function(_canvas) {
 	var canvas = _canvas;
-	var size = 100;
 	var expectedTagName = 'canvas';
 
 	// Check if it is really canvas passed
 	if (!canvas || canvas.tagName.toLowerCase() != expectedTagName) {
 		canvas = document.createElement(expectedTagName);
+		canvas.width = 100;
+		canvas.height = canvas.width;
 	}
-	canvas.width = size;
-	canvas.height = size;
 
 	// Allowed angles
 	var minAngle = 0.0;
@@ -35,13 +34,13 @@ var Loader = function(_canvas) {
 	var length = maxAngle / chunks;
 
 	// Radius of outer circle
-	var outerRadius = (4 * size) / 10;
+	var outerRadius = (4 * canvas.width) / 10;
 	// Radius of inner circle
-	var innerRadius = (13 * size) / 50;
+	var innerRadius = (13 * canvas.width) / 50;
 
 	// Drawing context
 	var context = canvas.getContext('2d');
-	context.lineWidth = size / 5;
+	context.lineWidth = canvas.width / 5;
 	context.strokeStyle = color;
 	context.fillStyle = color;
 
@@ -123,6 +122,8 @@ Loader.prototype.draw = function() {
 	}
 
 	this.self.doShift();
+
+	return this.self;
 };
 
 /**

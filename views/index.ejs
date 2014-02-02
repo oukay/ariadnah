@@ -4,6 +4,7 @@
 		<title><%= title %></title>
 		<link rel='stylesheet' href='/stylesheets/style.css' />
 		<script src='/javascripts/Global.js'></script>
+		<script src='/javascripts/Ajax.js'></script>
 		<script src='/javascripts/Hamburger.js'></script>
 		<script src='/javascripts/Loader.js'></script>
 		<script src='/javascripts/MosaicElement.js'></script>
@@ -20,26 +21,37 @@
 	</body>
 
 	<script>
-		var scriptLoadingTime = Date.now();
-
 		// Create Hamburger
 		new Hamburger(NONE).addClass('button-header button-left hoverable').attachTo(document.getElementById('header-div')).draw();
 
-		// Create MosaicElements
-		var mosaicElements = [];
-		for (var i = 0; i < 10; i++) {
-			mosaicElements.push(new MosaicElement(NONE).addClass('mosaic-element hoverable').attachTo(document.getElementById('body-div')).draw());
-		}
-
-		// Create Loaders
 		var loaders = [];
-		for (var i = 0; i < 0; i++) {
-			loaders.push(new Loader(NONE).addClass('icon-loader').attachTo(document.getElementById('body-div')));
-			setInterval('loaders[' + i + '].draw()', 50);
-		}
 
-		scriptLoadingTime = Date.now() - scriptLoadingTime;
-		document.getElementById('footer-div').appendChild(
-				document.createTextNode('Javascript loading time: ' + scriptLoadingTime + 'ms'));
+		var mosaicElements = [];
+		var getNextMosaicElementsSuccess = function(_element, _response) {
+			if (_response.status === 'ok') {
+				_element.getNext(getNextMosaicElement).stopLoader().draw();
+			}
+		};
+		var getNextMosaicElementsError = function(_element, _response) {
+			console.log(_response);
+		};
+
+		var getNextMosaicElement = function(_index) {
+			var mosaicElement = new MosaicElement(NONE, NONE).
+					setIndex(_index).addClass('mosaic-element hoverable').
+					attachTo(document.getElementById('body-div')).startLoader();
+
+			mosaicElements.push(mosaicElement);
+
+			new Ajax(mosaicElement).get(
+					'/course/' + _index,
+					NONE,
+					NONE,
+					getNextMosaicElementsSuccess,
+					getNextMosaicElementsError
+			);
+		};
+		// Call for loading first mosaic element
+		getNextMosaicElement(0);
 	</script>
 </html>

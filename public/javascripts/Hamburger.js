@@ -95,6 +95,8 @@ Hamburger.prototype.draw = function() {
 
 		this.self.doShift();
 	}
+
+	return this.self;
 };
 
 /**

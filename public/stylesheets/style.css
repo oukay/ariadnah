@@ -18,7 +18,7 @@ body {
  */
 div.header,
 div.footer {
-  border-width: 2px;
+  border-width: 1px;
   border-style: solid;
   border-color: #b7b7b7;
   background-color: #f9f9f9;
@@ -37,14 +37,14 @@ div.footer-fixed {
 }
 div.header-dummy {
   height: 60px;
-  border-width: 2px;
+  border-width: 1px;
   border-style: solid;
   border-color: #ffffff;
   background-color: #ffffff;
 }
 div.footer-dummy {
   height: 30px;
-  border-width: 2px;
+  border-width: 1px;
   border-style: solid;
   border-color: #ffffff;
   background-color: #ffffff;
@@ -58,13 +58,13 @@ div.footer-dummy {
   background-color: #f9f9f9;
 }
 .button-left {
-  border-right: 2px;
+  border-right: 1px;
   border-right-style: solid;
   border-right-color: #b7b7b7;
   float: left;
 }
 .button-right {
-  border-left: 2px;
+  border-left: 1px;
   border-left-style: solid;
   border-left-color: #b7b7b7;
   float: right;
@@ -76,18 +76,10 @@ div.footer-dummy {
 /**
  * FIXME
  */
-.icon-loader {
-  display: block;
-  width: 100px;
-  height: 100px;
-}
-/**
- * FIXME
- */
 .mosaic-element {
   margin: 25px;
   display: inline-block;
-  border-width: 2px;
+  border-width: 1px;
   border-style: solid;
   border-color: #b7b7b7;
   width: 250px;
