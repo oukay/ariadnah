@@ -3,3 +3,16 @@
  * Contains global variables
  */
 var NONE = null;
+
+function getElementById(_id) {
+	return document.getElementById(_id);
+}
+
+function getElementsByClassName(_className) {
+	return document.getElementsByClassName(_className);
+}
+
+function getCssStyle(_element, _property) {
+	return parseInt(getComputedStyle(_element, null).getPropertyValue(_property));
+}
+

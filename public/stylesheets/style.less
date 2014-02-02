@@ -1,15 +1,18 @@
-@element-border-color: #b7b7b7;
+@element-border-color: #b5b5b5;
+@text-color: @element-border-color;
 @element-background-color: #f9f9f9;
 @element-background-color-on-hover: #d9d9d9;
 @background-color: #ffffff;
 
 @border-width: 1px;
+@no-border-width: 0px;
 
 /**
  * FIXME: Hardcoded values need to be fixed
  */
 @header-size: 60px;
 @footer-size: 30px;
+@body-element-padding: 25px;
 @mosaic-element-margin: 25px;
 @body-font-size: 12px;
 @body-font-family: courier, monospace;
@@ -19,13 +22,14 @@ body {
 	padding: 0px;
 	font-size: @body-font-size;
 	font-family: @body-font-family;
+	color: @text-color;
 }
 
 /**
  * body
  */
 .body {
-	padding: @mosaic-element-margin;
+	padding: @body-element-padding;
 }
 
 /**
@@ -69,8 +73,8 @@ div.footer-dummy {
  * buttons
  */
 .button-header {
-	width: @header-size;
 	height: @header-size;
+	line-height: @header-size;
 	background-color: @element-background-color;
 }
 .button-left {
@@ -85,6 +89,15 @@ div.footer-dummy {
 	border-left-color: @element-border-color;
 	float: right;
 }
+.button-hamburger {
+	width: @header-size;
+}
+.button-log-in {
+	width: 2 * @header-size;
+	font-size: @header-size / 3;
+	text-align: center;
+	font-weight: bold;
+}
 
 .hoverable:hover {
 	cursor: pointer;
@@ -96,10 +109,8 @@ div.footer-dummy {
  */
 .mosaic-element {
 	margin: @mosaic-element-margin;
-	display: inline-block;
 	border-width: @border-width;
 	border-style: solid;
 	border-color: @element-border-color;
-	width: 250px;
-	height: 250px;
+	width: 25%;
 }

@@ -6,23 +6,22 @@
  */
 var Hamburger = function(_canvas) {
 	var canvas = _canvas;
-	var size = 100;
 	var expectedTagName = 'canvas';
 
 	// Check if it is really canvas passed
 	if (!canvas || canvas.tagName.toLowerCase() != expectedTagName) {
 		canvas = document.createElement(expectedTagName);
+		canvas.width = 100;
+		canvas.height = canvas.width;
 	}
-	canvas.width = size;
-	canvas.height = size;
 
 	// Color
 	var color = '#b7b7b7';
 	// Number of chunks
 	var chunks = 3;
 	// Chunk width and height
-	var chunkWidth = size / 2;
-	var chunkHeight = size / 10;
+	var chunkWidth = canvas.width / 2;
+	var chunkHeight = canvas.width / 10;
 	// Space between chunks
 	var space = chunkHeight / 2;
 	// Chunk left and top

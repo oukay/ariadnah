@@ -6,8 +6,9 @@
 		<script src='/javascripts/Global.js'></script>
 		<script src='/javascripts/Ajax.js'></script>
 		<script src='/javascripts/Hamburger.js'></script>
+		<script src='/javascripts/LogIn.js'></script>
 		<script src='/javascripts/Loader.js'></script>
-		<script src='/javascripts/MosaicElement.js'></script>
+		<script src='/javascripts/Mosaic.js'></script>
 	</head>
 
 	<body id='body'>
@@ -22,37 +23,49 @@
 
 	<script>
 		// Create Hamburger
-		new Hamburger(NONE).addClass('button-header button-left hoverable').attachTo(document.getElementById('header-div')).draw();
+		new Hamburger(NONE).addClass('button-header button-left button-hamburger hoverable').
+				attachTo(getElementById('header-div')).draw();
+		// Create LogIn
+		new LogIn(NONE, '{Log In}').addClass('button-header button-right button-log-in hoverable').
+				attachTo(getElementById('header-div')).draw();
 
 		var loaders = [];
 
-		var mosaicElements = [];
-		var getNextMosaicElementsSuccess = function(_element, _response) {
+		var mosaics = [];
+		var getNextMosaicsSuccess = function(_element, _response) {
 			_element.stopLoader().draw();
 			if (!_response.course.last) {
-				_element.getNext(getNextMosaicElement);
+				_element.getNext(getNextMosaic);
 			}
 		};
-		var getNextMosaicElementsError = function(_element, _response) {
+		var getNextMosaicsError = function(_element, _response) {
 			console.log(_response);
 		};
 
-		var getNextMosaicElement = function(_index) {
-			var mosaicElement = new MosaicElement(NONE, NONE).
+		var getNextMosaic = function(_index) {
+			/**
+			 * TODO: Remove hardcoding
+			 * Next logic applies:
+			 * - Max box size is 250px 250px
+			 * - Min box size is 200px 200px
+			 * - outer padding is 25px
+			 * - box margin is 25px
+			 * - box border is 1px
+			 */
+			var mosaic = new Mosaic(NONE, NONE).
 					setIndex(_index).addClass('mosaic-element hoverable').
-					attachTo(document.getElementById('body-div')).startLoader();
+					attachTo(getElementById('body-div')).startLoader();
+			mosaics.push(mosaic);
 
-			mosaicElements.push(mosaicElement);
-
-			new Ajax(mosaicElement).get(
+			new Ajax(mosaic).get(
 					'/course/' + _index,
 					NONE,
 					NONE,
-					getNextMosaicElementsSuccess,
-					getNextMosaicElementsError
+					getNextMosaicsSuccess,
+					getNextMosaicsError
 			);
 		};
 		// Call for loading first mosaic element
-		getNextMosaicElement(0);
+		getNextMosaic(0);
 	</script>
 </html>

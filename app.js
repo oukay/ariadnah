@@ -40,11 +40,13 @@ app.configure(function () {
 		var url = '/course/';
 		var i = parseInt(req.url.replace(url, ''));
 
+		require('sleep').usleep(100000);
+		// TODO: Replace with real DB call
 		res.send({
 			course :{
 				index: i,
 				name: 'test',
-				last: i < 12
+				last: i > 10
 			}
 		});
 	});
