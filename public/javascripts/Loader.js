@@ -4,15 +4,21 @@
  * @param _canvas
  * @constructor
  */
-var Loader = function(_canvas) {
+var Loader = function(_canvas, _width, _height) {
 	var canvas = _canvas;
 	var expectedTagName = 'canvas';
 
 	// Check if it is really canvas passed
 	if (!canvas || canvas.tagName.toLowerCase() != expectedTagName) {
 		canvas = document.createElement(expectedTagName);
+	}
+	if (isNaN(_width) || isNaN(!_height)) {
+		// Default dimensions
 		canvas.width = 100;
-		canvas.height = canvas.width;
+		canvas.height = 100;
+	} else {
+		canvas.width = _width;
+		canvas.height = _height;
 	}
 
 	// Allowed angles
@@ -20,7 +26,7 @@ var Loader = function(_canvas) {
 	var maxAngle = 2.0;
 
 	// Color
-	var color = '#b7b7b7';
+	var color = '#959595';
 
 	// Which angle to start
 	var shift = minAngle;
@@ -92,7 +98,7 @@ var Loader = function(_canvas) {
 		}
 	};
 
-	this.getCanvas = function() {
+	this.getElement = function() {
 		return canvas;
 	};
 
@@ -127,12 +133,24 @@ Loader.prototype.draw = function() {
 };
 
 /**
+ * Undraw
+ */
+Loader.prototype.undraw = function() {
+	var context = this.self.getContext();
+
+	// Clear canvas
+	context.clearRect(0, 0, this.self.getWidth(), this.self.getHeight());
+
+	return this.self;
+};
+
+/**
  * Add css class to inner element
  * @param _class
  * @returns {Loader|*}
  */
 Loader.prototype.addClass = function(_class) {
-	this.self.getCanvas().className += _class;
+	this.self.getElement().className += _class;
 
 	return this.self;
 };
@@ -143,7 +161,7 @@ Loader.prototype.addClass = function(_class) {
  * @returns {Loader|*}
  */
 Loader.prototype.attachTo = function(_element) {
-	_element.appendChild(this.self.getCanvas());
+	_element.appendChild(this.self.getElement());
 
 	return this.self;
 };
@@ -154,7 +172,7 @@ Loader.prototype.attachTo = function(_element) {
  * @returns {Loader|*}
  */
 Loader.prototype.attach = function(_element) {
-	this.self.getCanvas().appendChild(_element);
+	this.self.getElement().appendChild(_element);
 
 	return this.self;
 };
@@ -166,7 +184,7 @@ Loader.prototype.attach = function(_element) {
  * @returns {Loader|*}
  */
 Loader.prototype.addEventListener = function(_event, _callback) {
-	this.self.getCanvas().addEventListener(_event, _callback);
+	this.self.getElement().addEventListener(_event, _callback);
 
 	return this.self;
 };

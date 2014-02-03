@@ -1,4 +1,5 @@
-@element-border-color: #b5b5b5;
+// FIXME: Remove hardcoded elements
+@element-border-color: #959595;
 @text-color: @element-border-color;
 @element-background-color: #f9f9f9;
 @element-background-color-on-hover: #d9d9d9;
@@ -7,9 +8,7 @@
 @border-width: 1px;
 @no-border-width: 0px;
 
-/**
- * FIXME: Hardcoded values need to be fixed
- */
+// FIXME: Hardcoded values need to be fixed
 @header-size: 60px;
 @footer-size: 30px;
 @body-element-padding: 25px;
@@ -25,16 +24,12 @@ body {
 	color: @text-color;
 }
 
-/**
- * body
- */
+// body
 .body {
 	padding: @body-element-padding;
 }
 
-/**
- * header/footer
- */
+// header/footer
 div.header,
 div.footer {
 	border-width: @border-width;
@@ -46,13 +41,11 @@ div.header-fixed {
 	height: @header-size;
 	position: fixed;
 	top: 0px;
-	width: 100%;
 }
 div.footer-fixed {
 	height: @footer-size;
 	position: fixed;
 	bottom: 0px;
-	width: 100%;
 }
 div.header-dummy {
 	height: @header-size;
@@ -69,9 +62,47 @@ div.footer-dummy {
 	background-color: @background-color;
 }
 
-/**
- * buttons
- */
+// Menu
+div.menu {
+	position: fixed;
+	top: @header-size + @border-width * 2;
+	background-color: @element-background-color;
+}
+// FIXME: Here is very minor bug with hamburger which hods this menu. Hamburger has left 1px border, but should not
+div.menu-left {
+	left: 0px;
+	border-width: 0px @border-width 0px @border-width;
+	border-style: none solid none solid;
+	border-color: @element-border-color;
+}
+div.menu-right {
+	right: 0px;
+	border-width: 0px 0px 0px @border-width;
+	border-style: none none none solid;
+	border-color: @element-border-color;
+}
+div.menu-item {
+	padding-left: @header-size / 10;
+	padding-right: @header-size / 10;
+	font-size: @header-size / 3;
+	text-align: center;
+	font-weight: bold;
+	height: @header-size;
+	line-height: @header-size;
+	background-color: @element-background-color;
+}
+div.menu-item-left {
+	border-width: 0px 0px @border-width 0px;
+	border-style: none none solid none;
+	border-color: @element-border-color;
+}
+div.menu-item-right {
+	border-width: 0px 0px @border-width 0px;
+	border-style: none none solid none;
+	border-color: @element-border-color;
+}
+
+// buttons
 .button-header {
 	height: @header-size;
 	line-height: @header-size;
@@ -80,37 +111,64 @@ div.footer-dummy {
 .button-left {
 	border-right: @border-width;
 	border-right-style: solid;
-	border-right-color: @element-border-color;
+	border-color: @element-border-color;
 	float: left;
 }
 .button-right {
 	border-left: @border-width;
 	border-left-style: solid;
-	border-left-color: @element-border-color;
+	border-color: @element-border-color;
 	float: right;
 }
 .button-hamburger {
 	width: @header-size;
 }
 .button-log-in {
-	width: 2 * @header-size;
+	padding-left: @header-size / 10;
+	padding-right: @header-size / 10;
 	font-size: @header-size / 3;
 	text-align: center;
 	font-weight: bold;
 }
 
+// Mix
 .hoverable:hover {
 	cursor: pointer;
 	background-color: @element-background-color-on-hover;
 }
+.clicked {
+	background-color: @element-background-color-on-hover;
+}
+.full-height {
+	height: 100%;
+}
+.full-width {
+	width: 100%;
+}
+
+.unselectable {
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 
 /**
- * FIXME
+ * FIXME: Size of the mosaics
  */
 .mosaic-element {
+	display: inline-block;
 	margin: @mosaic-element-margin;
+	padding-left: @header-size / 10;
+	padding-right: @header-size / 10;
 	border-width: @border-width;
 	border-style: solid;
 	border-color: @element-border-color;
-	width: 25%;
+	height: 250px;
+	line-height: 250px;
+	width: 250px;
+	font-size: 250px / 10;
+	text-align: center;
+	font-weight: bold;
 }

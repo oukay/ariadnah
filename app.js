@@ -41,12 +41,11 @@ app.configure(function () {
 		var i = parseInt(req.url.replace(url, ''));
 
 		require('sleep').usleep(100000);
-		// TODO: Replace with real DB call
 		res.send({
 			course :{
 				index: i,
-				name: 'test',
-				last: i > 10
+				name: '{Course' + i + '}',
+				last: i > 25
 			}
 		});
 	});

@@ -11,7 +11,7 @@ var Ajax = function(_element) {
 
 	this.getElement = function() {
 		return element;
-	}
+	};
 
 	this.self = this;
 };

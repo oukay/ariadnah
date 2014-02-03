@@ -22,20 +22,29 @@ var LogIn = function(_div, _text) {
 };
 
 /**
- * Draw
- */
-LogIn.prototype.draw = function() {
-	// TODO: Something goes here
-	return this.self;
-};
-
-/**
  * Add css class to inner element
  * @param _class
  * @returns {LogIn|*}
  */
 LogIn.prototype.addClass = function(_class) {
 	this.self.getElement().className += _class;
+
+	return this.self;
+};
+
+/**
+ * Remove css class from inner element
+ * @param _class
+ * @returns {LogIn|*}
+ */
+LogIn.prototype.removeClass = function(_class) {
+	var classes = this.self.getElement().className.split(' ');
+	this.self.getElement().className = '';
+	for(var i = 0; i < classes.length; i++) {
+		if(classes[i] !== _class) {
+			this.self.getElement().className += classes[i] + ' ';
+		}
+	}
 
 	return this.self;
 };

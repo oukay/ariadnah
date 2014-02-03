@@ -13,6 +13,6 @@ function getElementsByClassName(_className) {
 }
 
 function getCssStyle(_element, _property) {
-	return parseInt(getComputedStyle(_element, null).getPropertyValue(_property));
+	return getComputedStyle(_element, null).getPropertyValue(_property);
 }
 

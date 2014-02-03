@@ -16,7 +16,7 @@ var Hamburger = function(_canvas) {
 	}
 
 	// Color
-	var color = '#b7b7b7';
+	var color = '#959595';
 	// Number of chunks
 	var chunks = 3;
 	// Chunk width and height
@@ -69,7 +69,7 @@ var Hamburger = function(_canvas) {
 		chunkTop += chunkHeight + space;
 	};
 
-	this.getCanvas = function() {
+	this.getElement = function() {
 		return canvas;
 	};
 
@@ -104,7 +104,7 @@ Hamburger.prototype.draw = function() {
  * @returns {Hamburger|*}
  */
 Hamburger.prototype.addClass = function(_class) {
-	this.self.getCanvas().className += _class;
+	this.self.getElement().className += _class;
 
 	return this.self;
 };
@@ -115,7 +115,7 @@ Hamburger.prototype.addClass = function(_class) {
  * @returns {Hamburger|*}
  */
 Hamburger.prototype.attachTo = function(_element) {
-	_element.appendChild(this.self.getCanvas());
+	_element.appendChild(this.self.getElement());
 
 	return this.self;
 };
@@ -126,7 +126,7 @@ Hamburger.prototype.attachTo = function(_element) {
  * @returns {Hamburger|*}
  */
 Hamburger.prototype.attach = function(_element) {
-	this.self.getCanvas().appendChild(_element);
+	this.self.getElement().appendChild(_element);
 
 	return this.self;
 };
@@ -138,7 +138,7 @@ Hamburger.prototype.attach = function(_element) {
  * @returns {Hamburger|*}
  */
 Hamburger.prototype.addEventListener = function(_event, _callback) {
-	this.self.getCanvas().addEventListener(_event, _callback);
+	this.self.getElement().addEventListener(_event, _callback);
 
 	return this.self;
 };
