@@ -11,7 +11,6 @@ var MenuItem = function(_div, _text) {
 	if (!div || div.tagName.toLowerCase() != expectedTagName) {
 		div = document.createElement(expectedTagName);
 	}
-
 	div.textContent = _text;
 
 	this.getElement = function() {
@@ -39,17 +38,6 @@ MenuItem.prototype.addClass = function(_class) {
  */
 MenuItem.prototype.attachTo = function(_element) {
 	_element.appendChild(this.self.getElement());
-
-	return this.self;
-};
-
-/**
- * Attach element to mosaic element
- * @param _element
- * @returns {Menu|*}
- */
-MenuItem.prototype.attach = function(_element) {
-	this.self.getElement().appendChild(_element);
 
 	return this.self;
 };

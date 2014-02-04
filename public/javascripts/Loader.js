@@ -26,7 +26,7 @@ var Loader = function(_canvas, _width, _height) {
 	var maxAngle = 2.0;
 
 	// Color
-	var color = '#959595';
+	var color = ELEMENT_BORDER_COLOR;
 
 	// Which angle to start
 	var shift = minAngle;
@@ -162,17 +162,6 @@ Loader.prototype.addClass = function(_class) {
  */
 Loader.prototype.attachTo = function(_element) {
 	_element.appendChild(this.self.getElement());
-
-	return this.self;
-};
-
-/**
- * Attach element to loader
- * @param _element
- * @returns {Loader|*}
- */
-Loader.prototype.attach = function(_element) {
-	this.self.getElement().appendChild(_element);
 
 	return this.self;
 };

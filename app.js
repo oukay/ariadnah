@@ -45,7 +45,7 @@ app.configure(function () {
 			course :{
 				index: i,
 				name: '{Course' + i + '}',
-				last: i > 25
+				last: i > 24
 			}
 		});
 	});

@@ -61,17 +61,6 @@ LogIn.prototype.attachTo = function(_element) {
 };
 
 /**
- * Attach element to hamburger
- * @param _element
- * @returns {LogIn|*}
- */
-LogIn.prototype.attach = function(_element) {
-	this.self.getElement().appendChild(_element);
-
-	return this.self;
-};
-
-/**
  * Add event listener to hamburger
  * @param _event
  * @param _callback

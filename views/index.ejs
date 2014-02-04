@@ -7,6 +7,7 @@
 		<script src='/javascripts/Ajax.js'></script>
 		<script src='/javascripts/MenuItem.js'></script>
 		<script src='/javascripts/Menu.js'></script>
+		<script src='/javascripts/LinkedInIcon.js'></script>
 		<script src='/javascripts/Hamburger.js'></script>
 		<script src='/javascripts/LogIn.js'></script>
 		<script src='/javascripts/Loader.js'></script>
@@ -34,13 +35,14 @@
 		}
 
 		// Create LogIn
-		var logIn = new LogIn(NONE, '{Be Involved}').addClass('button-header button-right button-log-in hoverable unselectable')
+		var logIn = new LogIn(NONE, 'Sign In').addClass('button-header button-right button-sign-in hoverable unselectable')
 				.attachTo(getElementById('header-div'));
 		var logInMenu = new Menu(NONE).addClass('menu menu-right unselectable').display(false).
 				attachTo(getElementById('body-div')).setInvoker(logIn);
-		for (var i = 0; i < 2; i++) {
-			logInMenu.addItem(new MenuItem(NONE, '{Item' + i + '}').addClass('menu-item menu-item-right hoverable'));
-		}
+		var linkedInMenuItem = new MenuItem(NONE, NONE).addClass('menu-item menu-item-right hoverable');
+		var linkedInMenuItemIcon = new LinkedInIcon(NONE).draw();
+		linkedInMenuItemIcon.attachTo(linkedInMenuItem.getElement());
+		logInMenu.addItem(linkedInMenuItem);
 
 		// Loading mosaic
 		var mosaics = [];

@@ -118,17 +118,6 @@ Mosaic.prototype.attachTo = function(_element) {
 };
 
 /**
- * Attach element to mosaic element
- * @param _element
- * @returns {Mosaic|*}
- */
-Mosaic.prototype.attach = function(_element) {
-	this.self.getElement().appendChild(_element);
-
-	return this.self;
-};
-
-/**
  * Add event listener to mosaic element
  * @param _event
  * @param _callback

@@ -26,19 +26,41 @@ var Menu = function(_div) {
 		_item.attachTo(this.getElement());
 
 		return this;
-	}
+	};
 
 	this.getItem = function(_index) {
 		return items[_index];
-	}
+	};
 
 	this.getItems = function() {
 		return items;
-	}
+	};
 
 	this.setInvoker = function(_invoker) {
-		this.invoker = _invoker;
+		invoker = _invoker;
 
+		var that = this;
+
+		invoker.addEventListener('click', function() {
+			if (that.isDisplayed()) {
+				that.display(false);
+			} else {
+				that.display(true);
+			}
+		});
+
+		return this;
+	};
+
+	this.getInvoker = function() {
+		return this.invoker;
+	};
+
+	/**
+	 * Assumes that invoker already set
+	 * @returns {Menu}
+	 */
+	this.setInvokerWidth = function() {
 		var that = this;
 		this.invoker.addEventListener('click', function() {
 			if (that.isDisplayed()) {
@@ -49,11 +71,7 @@ var Menu = function(_div) {
 		});
 
 		return this;
-	}
-
-	this.getInvoker = function() {
-		return this.invoker;
-	}
+	};
 
 	this.getElement = function() {
 		return div;
@@ -68,11 +86,11 @@ var Menu = function(_div) {
 		}
 
 		return this;
-	}
+	};
 
 	this.isDisplayed = function() {
 		return 'none' != getCssStyle(this.getElement(), 'display');
-	}
+	};
 
 	this.self = this;
 };
@@ -95,17 +113,6 @@ Menu.prototype.addClass = function(_class) {
  */
 Menu.prototype.attachTo = function(_element) {
 	_element.appendChild(this.self.getElement());
-
-	return this.self;
-};
-
-/**
- * Attach element to mosaic element
- * @param _element
- * @returns {Menu|*}
- */
-Menu.prototype.attach = function(_element) {
-	this.self.getElement().appendChild(_element);
 
 	return this.self;
 };

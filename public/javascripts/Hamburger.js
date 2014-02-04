@@ -1,6 +1,5 @@
 /**
- * Created by OuKay(ouen.kay.gmail.com) on 1/31/14.
- * Creates and Hamburger icon
+ * Created by OuKay(ouen.kay.gmail.com)
  * @param _canvas
  * @constructor
  */
@@ -16,7 +15,7 @@ var Hamburger = function(_canvas) {
 	}
 
 	// Color
-	var color = '#959595';
+	var color = ELEMENT_BORDER_COLOR;
 	// Number of chunks
 	var chunks = 3;
 	// Chunk width and height
@@ -87,7 +86,6 @@ Hamburger.prototype.draw = function() {
 
 	// Draw chunks
 	for (var i = 0; i < this.self.getChunksCount(); i++) {
-		context.beginPath();
 		context.rect(this.self.getChunkLeft(), this.self.getChunkTop(),
 			this.self.getChunkWidth(), this.self.getChunkHeight());
 		context.fill();
@@ -116,17 +114,6 @@ Hamburger.prototype.addClass = function(_class) {
  */
 Hamburger.prototype.attachTo = function(_element) {
 	_element.appendChild(this.self.getElement());
-
-	return this.self;
-};
-
-/**
- * Attach element to hamburger
- * @param _element
- * @returns {Hamburger|*}
- */
-Hamburger.prototype.attach = function(_element) {
-	this.self.getElement().appendChild(_element);
 
 	return this.self;
 };

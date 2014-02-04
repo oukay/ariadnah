@@ -4,6 +4,10 @@
  */
 var NONE = null;
 
+var ELEMENT_BORDER_COLOR = '#959595';
+var ELEMENT_BACKGROUND_COLOR = '#f9f9f9';
+var BORDER_WIDTH = 1;
+
 function getElementById(_id) {
 	return document.getElementById(_id);
 }
