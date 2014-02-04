@@ -56,23 +56,6 @@ var Menu = function(_div) {
 		return this.invoker;
 	};
 
-	/**
-	 * Assumes that invoker already set
-	 * @returns {Menu}
-	 */
-	this.setInvokerWidth = function() {
-		var that = this;
-		this.invoker.addEventListener('click', function() {
-			if (that.isDisplayed()) {
-				that.display(false);
-			} else {
-				that.display(true);
-			}
-		});
-
-		return this;
-	};
-
 	this.getElement = function() {
 		return div;
 	};

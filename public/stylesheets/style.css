@@ -42,19 +42,20 @@ div.footer-dummy {
 div.menu {
   position: fixed;
   top: 62px;
-  background-color: #f9f9f9;
 }
 div.menu-left {
   left: 0px;
   border-width: 0px 1px 0px 1px;
   border-style: none solid none solid;
   border-color: #959595;
+  background-color: #f9f9f9;
 }
 div.menu-right {
   right: 0px;
-  border-width: 0px 0px 0px 1px;
-  border-style: none none none solid;
-  border-color: #959595;
+  border-width: 0px 0px 0px 0px;
+  border-style: none none none none;
+  border-color: #ffffff;
+  background-color: #ffffff;
 }
 div.menu-item {
   font-size: 20px;
@@ -70,9 +71,10 @@ div.menu-item-left {
   border-color: #959595;
 }
 div.menu-item-right {
-  border-width: 0px 0px 1px 0px;
-  border-style: none none solid none;
-  border-color: #959595;
+  border-width: 0px 0px 0px 0px;
+  border-style: none none none none;
+  border-color: #ffffff;
+  background-color: #ffffff;
 }
 .button-header {
   height: 60px;
@@ -100,11 +102,10 @@ div.menu-item-right {
   font-weight: bold;
 }
 .hoverable:hover {
-  cursor: pointer;
   background-color: #d9d9d9;
 }
-.clicked {
-  background-color: #d9d9d9;
+.pointerable:hover {
+  cursor: pointer;
 }
 .full-height {
   height: 100%;

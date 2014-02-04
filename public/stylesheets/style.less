@@ -66,7 +66,6 @@ div.footer-dummy {
 div.menu {
 	position: fixed;
 	top: @header-size + @border-width * 2;
-	background-color: @element-background-color;
 }
 // FIXME: Here is very minor bug with hamburger which hods this menu. Hamburger has left 1px border, but should not
 div.menu-left {
@@ -74,12 +73,14 @@ div.menu-left {
 	border-width: 0px @border-width 0px @border-width;
 	border-style: none solid none solid;
 	border-color: @element-border-color;
+	background-color: @element-background-color;
 }
 div.menu-right {
 	right: 0px;
-	border-width: 0px 0px 0px @border-width;
-	border-style: none none none solid;
-	border-color: @element-border-color;
+	border-width: 0px 0px 0px 0px;
+	border-style: none none none none;
+	border-color: @background-color;
+	background-color: @background-color;
 }
 div.menu-item {
 	font-size: @header-size / 3;
@@ -95,9 +96,10 @@ div.menu-item-left {
 	border-color: @element-border-color;
 }
 div.menu-item-right {
-	border-width: 0px 0px @border-width 0px;
-	border-style: none none solid none;
-	border-color: @element-border-color;
+	border-width: 0px 0px 0px 0px;
+	border-style: none none none none;
+	border-color: @background-color;
+	background-color: @background-color;
 }
 
 // buttons
@@ -129,12 +131,13 @@ div.menu-item-right {
 
 // Mix
 .hoverable:hover {
+	background-color: @element-background-color-on-hover;
+}
+.pointerable:hover {
 	cursor: pointer;
-	background-color: @element-background-color-on-hover;
 }
-.clicked {
-	background-color: @element-background-color-on-hover;
-}
+
+
 .full-height {
 	height: 100%;
 }

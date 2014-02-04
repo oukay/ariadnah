@@ -14,9 +14,7 @@ app.configure(function () {
 	app.set('views', viewsPath);
 	app.set('view engine', 'ejs');
 
-	app.use(express.logger());
 	app.use(express.json());
-	app.use(express.urlencoded());
 
 	app.use(lessMiddleware({
 		src: publicPath,

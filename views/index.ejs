@@ -26,23 +26,21 @@
 
 	<script>
 		// Create Hamburger
-		var hamburger = new Hamburger(NONE).addClass('button-header button-left button-hamburger hoverable').
+		var hamburger = new Hamburger(NONE).addClass('button-header button-left button-hamburger hoverable pointerable').
 				attachTo(getElementById('header-div')).draw();
 		var hamburgerMenu = new Menu(NONE).addClass('menu menu-left full-height unselectable').display(false).
 				attachTo(getElementById('body-div')).setInvoker(hamburger);
 		for (var i = 0; i < 4; i++) {
-			hamburgerMenu.addItem(new MenuItem(NONE, '{Hamburger' + i + '}').addClass('menu-item menu-item-left hoverable'));
+			hamburgerMenu.addItem(new MenuItem(NONE, '{Hamburger' + i + '}').addClass('menu-item menu-item-left hoverable pointerable'));
 		}
 
 		// Create LogIn
-		var logIn = new LogIn(NONE, 'Sign In').addClass('button-header button-right button-sign-in hoverable unselectable')
+		var logIn = new LogIn(NONE, 'Sign In').addClass('button-header button-right button-sign-in hoverable pointerable unselectable')
 				.attachTo(getElementById('header-div'));
 		var logInMenu = new Menu(NONE).addClass('menu menu-right unselectable').display(false).
 				attachTo(getElementById('body-div')).setInvoker(logIn);
-		var linkedInMenuItem = new MenuItem(NONE, NONE).addClass('menu-item menu-item-right hoverable');
-		var linkedInMenuItemIcon = new LinkedInIcon(NONE).draw();
-		linkedInMenuItemIcon.attachTo(linkedInMenuItem.getElement());
-		logInMenu.addItem(linkedInMenuItem);
+		var linkedInMenuItemIcon = new LinkedInIcon(NONE).addClass('pointerable').draw();
+		logInMenu.addItem(linkedInMenuItemIcon);
 
 		// Loading mosaic
 		var mosaics = [];
@@ -67,7 +65,7 @@
 			 * - box border is 1px
 			 */
 			var mosaic = new Mosaic(NONE, NONE).
-					setIndex(_index).addClass('mosaic-element hoverable').
+					setIndex(_index).addClass('mosaic-element hoverable pointerable').
 					attachTo(getElementById('body-div')).startLoader();
 			mosaics.push(mosaic);
 
