@@ -64,7 +64,7 @@ var Menu = function(_div) {
 		if (_display) {
 			this.getElement().style.display = display;
 		} else {
-			display = getCssStyle(this.getElement(), 'display');
+			display = e$(this.getElement()).css('display');
 			this.getElement().style.display = 'none';
 		}
 
@@ -72,7 +72,7 @@ var Menu = function(_div) {
 	};
 
 	this.isDisplayed = function() {
-		return 'none' != getCssStyle(this.getElement(), 'display');
+		return 'none' != e$(this.getElement()).css('display');
 	};
 
 	this.self = this;

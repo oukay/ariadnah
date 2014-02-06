@@ -1,6 +1,5 @@
 /**
- * Created by OuKay(ouen.kay.gmail.com) on 1/31/14.
- * Creates and draw Loading icon
+ * Created by OuKay(ouen.kay.gmail.com)
  * @param _canvas
  * @constructor
  */

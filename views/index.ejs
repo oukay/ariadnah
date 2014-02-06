@@ -1,51 +1,70 @@
 <!doctype html>
 <html>
 	<head>
+		<meta charset="utf-16">
 		<title><%= title %></title>
-		<link rel='stylesheet' href='/stylesheets/style.css' />
-		<script src='/javascripts/Global.js'></script>
-		<script src='/javascripts/Ajax.js'></script>
-		<script src='/javascripts/MenuItem.js'></script>
-		<script src='/javascripts/Menu.js'></script>
-		<script src='/javascripts/LinkedInIcon.js'></script>
-		<script src='/javascripts/Hamburger.js'></script>
-		<script src='/javascripts/LogIn.js'></script>
-		<script src='/javascripts/Loader.js'></script>
-		<script src='/javascripts/Mosaic.js'></script>
+
+		<!-- External -->
+		<link rel="stylesheet" href="/font-awesome/less/font-awesome.css">
+
+		<!-- Custom -->
+		<link rel='stylesheet' href='/less/style.css' />
+		<script src='/js/o.js'></script>
+		<script src='/js/Global.js'></script>
+		<script src='/js/Ajax.js'></script>
+		<script src='/js/MenuItem.js'></script>
+		<script src='/js/Menu.js'></script>
+		<script src='/js/Hamburger.js'></script>
+		<script src='/js/Loader.js'></script>
+		<script src='/js/Mosaic.js'></script>
 	</head>
 
-	<body id='body'>
-		<div id='header-div' class='header header-fixed full-width'></div>
+	<body>
+		<div id='header' class='header header-fixed full-width z-max unselectable'>
+			<div class='button-left button-hamburger hoverable pointerable'>
+				<i class='fa fa-2x fa-bars centered'></i>
+			</div>
+		</div>
 		<div id='header-div-dummy' class='header-dummy'></div>
 
-		<div id='body-div' class='body'></div>
+		<div id='social-menu' class='social-menu unselectable'>
+			<div class='social-menu-puller pointerable centered'>
+				<i class='fa fa-2x fa-chevron-left'></i>
+			</div>
+			<div class='social-menu-items-holder centered'>
+				<i class='fa fa-linkedin-square pointerable social-menu-item'></i>
+				<i class='fa fa-google-plus-square pointerable social-menu-item'></i>
+				<i class='fa fa-facebook-square pointerable social-menu-item'></i>
+			</div>
+		</div>
 
-		<div id='footer-div-dummy' class='footer-dummy'></div>
-		<div id='footer-div' class='footer footer-fixed full-width'></div>
+		<div id='body-div' class='body'></div>
 	</body>
 
 	<script>
-		// Create Hamburger
-		var hamburger = new Hamburger(NONE).addClass('button-header button-left button-hamburger hoverable pointerable').
-				attachTo(getElementById('header-div')).draw();
-		var hamburgerMenu = new Menu(NONE).addClass('menu menu-left full-height unselectable').display(false).
-				attachTo(getElementById('body-div')).setInvoker(hamburger);
+		var hamburgerMenu = new Menu(NONE).addClass('main-menu full-height unselectable').display(false).
+				attachTo(e$('#body-div').element());
 		for (var i = 0; i < 4; i++) {
-			hamburgerMenu.addItem(new MenuItem(NONE, '{Hamburger' + i + '}').addClass('menu-item menu-item-left hoverable pointerable'));
+			hamburgerMenu.addItem(new MenuItem(NONE, '{Hamburger' + i + '}').addClass('main-menu-item hoverable pointerable'));
 		}
+		hamburgerMenu.setInvoker(e$('.button-hamburger').element());
 
-		// Create LogIn
-		var logIn = new LogIn(NONE, 'Sign In').addClass('button-header button-right button-sign-in hoverable pointerable unselectable')
-				.attachTo(getElementById('header-div'));
-		var logInMenu = new Menu(NONE).addClass('menu menu-right unselectable').display(false).
-				attachTo(getElementById('body-div')).setInvoker(logIn);
-		var linkedInMenuItemIcon = new LinkedInIcon(NONE).addClass('pointerable').draw();
-		logInMenu.addItem(linkedInMenuItemIcon);
+		e$('#social-menu .social-menu-puller').on('click', function() {
+			if (e$(this).find('i').hasClass('fa-chevron-left')) {
+				e$(this).find('i').replaceClass('fa-chevron-left', 'fa-chevron-right');
+
+				e$('#social-menu').css('right', 0 + 'px');
+			} else {
+				var moveBy = parseInt(e$('#social-menu .social-menu-items-holder').css('width'));
+
+				e$(this).find('i').replaceClass('fa-chevron-right', 'fa-chevron-left');
+				e$('#social-menu').css('right', (0 - moveBy) + 'px');
+			}
+		});
 
 		// Loading mosaic
 		var mosaics = [];
 		var getNextMosaicsSuccess = function(_element, _response) {
-			_element.stopLoader();
 			_element.setText(_response.course.name);
 			if (!_response.course.last) {
 				_element.getNext(getNextMosaic);
@@ -66,7 +85,7 @@
 			 */
 			var mosaic = new Mosaic(NONE, NONE).
 					setIndex(_index).addClass('mosaic-element hoverable pointerable').
-					attachTo(getElementById('body-div')).startLoader();
+					attachTo(e$('#body-div').element());
 			mosaics.push(mosaic);
 
 			new Ajax(mosaic).get(

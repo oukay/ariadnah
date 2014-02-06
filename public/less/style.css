@@ -8,8 +8,7 @@ body {
 .body {
   padding: 25px;
 }
-div.header,
-div.footer {
+div.header {
   border-width: 1px;
   border-style: solid;
   border-color: #959595;
@@ -20,11 +19,6 @@ div.header-fixed {
   position: fixed;
   top: 0px;
 }
-div.footer-fixed {
-  height: 30px;
-  position: fixed;
-  bottom: 0px;
-}
 div.header-dummy {
   height: 60px;
   border-width: 1px;
@@ -32,54 +26,51 @@ div.header-dummy {
   border-color: #ffffff;
   background-color: #ffffff;
 }
-div.footer-dummy {
-  height: 30px;
+.main-menu {
+  position: fixed;
+  top: 61px;
+  left: 0px;
   border-width: 1px;
   border-style: solid;
-  border-color: #ffffff;
-  background-color: #ffffff;
-}
-div.menu {
-  position: fixed;
-  top: 62px;
-}
-div.menu-left {
-  left: 0px;
-  border-width: 0px 1px 0px 1px;
-  border-style: none solid none solid;
   border-color: #959595;
   background-color: #f9f9f9;
 }
-div.menu-right {
-  right: 0px;
-  border-width: 0px 0px 0px 0px;
-  border-style: none none none none;
-  border-color: #ffffff;
-  background-color: #ffffff;
-}
-div.menu-item {
+.main-menu-item {
   font-size: 20px;
   text-align: center;
   font-weight: bold;
   height: 60px;
   line-height: 60px;
   background-color: #f9f9f9;
-}
-div.menu-item-left {
   border-width: 0px 0px 1px 0px;
   border-style: none none solid none;
   border-color: #959595;
 }
-div.menu-item-right {
-  border-width: 0px 0px 0px 0px;
-  border-style: none none none none;
-  border-color: #ffffff;
-  background-color: #ffffff;
-}
-.button-header {
-  height: 60px;
-  line-height: 60px;
+.social-menu {
+  position: fixed;
+  top: 61px;
+  right: -60px;
+  padding: 6px 0 6px 0;
+  border-radius: 30px 0px 0px 30px;
   background-color: #f9f9f9;
+  border-width: 1px 0px 1px 1px;
+  border-style: solid none solid solid;
+  border-color: #959595;
+}
+.social-menu-item {
+  font-size: 60px;
+  display: block;
+  color: #959595;
+}
+.social-menu-item:hover {
+  color: #747474;
+}
+.social-menu-items-holder {
+  display: inline-block;
+}
+.social-menu-puller {
+  display: inline-block;
+  padding-right: 12px;
 }
 .button-left {
   border-right: 1px;
@@ -87,19 +78,10 @@ div.menu-item-right {
   border-color: #959595;
   float: left;
 }
-.button-right {
-  border-left: 1px;
-  border-left-style: solid;
-  border-color: #959595;
-  float: right;
-}
 .button-hamburger {
   width: 60px;
-}
-.button-sign-in {
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
+  height: 60px;
+  display: table;
 }
 .hoverable:hover {
   background-color: #d9d9d9;
@@ -120,11 +102,17 @@ div.menu-item-right {
   -ms-user-select: none;
   user-select: none;
 }
-/**
- * FIXME: Size of the mosaics
- */
+.z-max {
+  z-index: 9999;
+}
+.centered {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
 .mosaic-element {
   display: inline-block;
+  vertical-align: top;
   margin: 25px;
   padding-left: 6px;
   padding-right: 6px;

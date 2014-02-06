@@ -43,7 +43,7 @@ app.configure(function () {
 			course :{
 				index: i,
 				name: '{Course' + i + '}',
-				last: i > 24
+				last: i > 5
 			}
 		});
 	});

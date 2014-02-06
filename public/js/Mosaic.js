@@ -71,29 +71,29 @@ var Mosaic = function(_div, _loader) {
 	this.self = this;
 };
 
-/**
- * Start loader
- */
-Mosaic.prototype.startLoader = function() {
-	var that = this.self;
-
-	this.self.setInterval(setInterval(function() {
-		that.getLoader().draw();
-	}, 50));
-
-	return that;
-};
-
-/**
- * Stop loader
- */
-Mosaic.prototype.stopLoader = function() {
-	clearInterval(this.self.getInterval());
-	this.self.getLoader().undraw();
-	this.self.getElement().removeChild(this.self.getLoader().getElement());
-
-	return this.self;
-};
+///**
+// * Start loader
+// */
+//Mosaic.prototype.startLoader = function() {
+//	var that = this.self;
+//
+//	this.self.setInterval(setInterval(function() {
+//		that.getLoader().draw();
+//	}, 50));
+//
+//	return that;
+//};
+//
+///**
+// * Stop loader
+// */
+//Mosaic.prototype.stopLoader = function() {
+//	clearInterval(this.self.getInterval());
+//	this.self.getLoader().undraw();
+//	this.self.getElement().removeChild(this.self.getLoader().getElement());
+//
+//	return this.self;
+//};
 
 /**
  * Add css class to inner element

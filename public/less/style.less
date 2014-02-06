@@ -3,6 +3,8 @@
 @text-color: @element-border-color;
 @element-background-color: #f9f9f9;
 @element-background-color-on-hover: #d9d9d9;
+@social-color: @element-border-color;
+@social-color-on-hover: #747474;
 @background-color: #ffffff;
 
 @border-width: 1px;
@@ -10,7 +12,7 @@
 
 // FIXME: Hardcoded values need to be fixed
 @header-size: 60px;
-@footer-size: 30px;
+@social-font-size: 60px;
 @body-element-padding: 25px;
 @mosaic-element-margin: 25px;
 @body-font-size: 12px;
@@ -30,8 +32,7 @@ body {
 }
 
 // header/footer
-div.header,
-div.footer {
+div.header{
 	border-width: @border-width;
 	border-style: solid;
 	border-color: @element-border-color;
@@ -42,11 +43,6 @@ div.header-fixed {
 	position: fixed;
 	top: 0px;
 }
-div.footer-fixed {
-	height: @footer-size;
-	position: fixed;
-	bottom: 0px;
-}
 div.header-dummy {
 	height: @header-size;
 	border-width: @border-width;
@@ -54,79 +50,66 @@ div.header-dummy {
 	border-color: @background-color;
 	background-color: @background-color;
 }
-div.footer-dummy {
-	height: @footer-size;
-	border-width: @border-width;
-	border-style: solid;
-	border-color: @background-color;
-	background-color: @background-color;
-}
 
 // Menu
-div.menu {
+.main-menu {
 	position: fixed;
-	top: @header-size + @border-width * 2;
-}
-// FIXME: Here is very minor bug with hamburger which hods this menu. Hamburger has left 1px border, but should not
-div.menu-left {
+	top: @header-size + @border-width;
 	left: 0px;
-	border-width: 0px @border-width 0px @border-width;
-	border-style: none solid none solid;
+	border-width: @border-width;
+	border-style: solid;
 	border-color: @element-border-color;
 	background-color: @element-background-color;
 }
-div.menu-right {
-	right: 0px;
-	border-width: 0px 0px 0px 0px;
-	border-style: none none none none;
-	border-color: @background-color;
-	background-color: @background-color;
-}
-div.menu-item {
+.main-menu-item {
 	font-size: @header-size / 3;
 	text-align: center;
 	font-weight: bold;
 	height: @header-size;
 	line-height: @header-size;
 	background-color: @element-background-color;
-}
-div.menu-item-left {
 	border-width: 0px 0px @border-width 0px;
 	border-style: none none solid none;
 	border-color: @element-border-color;
 }
-div.menu-item-right {
-	border-width: 0px 0px 0px 0px;
-	border-style: none none none none;
-	border-color: @background-color;
-	background-color: @background-color;
+.social-menu {
+	position: fixed;
+	top: @header-size + @border-width;
+	right: 0px - @social-font-size;
+	padding: @header-size / 10 0 @header-size / 10 0;
+	border-radius: @header-size / 2 0px 0px @header-size / 2;
+	background-color: @element-background-color;
+	border-width: @border-width 0px @border-width @border-width;
+	border-style: solid none solid solid;
+	border-color: @element-border-color;
+}
+.social-menu-item {
+	font-size: @social-font-size;
+	display: block;
+	color: @social-color;
+}
+.social-menu-item:hover {
+	color: @social-color-on-hover;
+}
+.social-menu-items-holder {
+	display: inline-block;
+}
+.social-menu-puller {
+	display: inline-block;
+	padding-right: @header-size / 5;
 }
 
 // buttons
-.button-header {
-	height: @header-size;
-	line-height: @header-size;
-	background-color: @element-background-color;
-}
 .button-left {
 	border-right: @border-width;
 	border-right-style: solid;
 	border-color: @element-border-color;
 	float: left;
 }
-.button-right {
-	border-left: @border-width;
-	border-left-style: solid;
-	border-color: @element-border-color;
-	float: right;
-}
 .button-hamburger {
 	width: @header-size;
-}
-.button-sign-in {
-	font-size: @header-size / 3;
-	text-align: center;
-	font-weight: bold;
+	height: @header-size;
+	display: table;
 }
 
 // Mix
@@ -136,15 +119,12 @@ div.menu-item-right {
 .pointerable:hover {
 	cursor: pointer;
 }
-
-
 .full-height {
 	height: 100%;
 }
 .full-width {
 	width: 100%;
 }
-
 .unselectable {
 	-moz-user-select: none;
 	-khtml-user-select: none;
@@ -152,12 +132,19 @@ div.menu-item-right {
 	-ms-user-select: none;
 	user-select: none;
 }
+.z-max {
+	z-index: 9999;
+}
+.centered {
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+}
 
-/**
- * FIXME: Size of the mosaics
- */
+// FIXME: Size of the mosaics
 .mosaic-element {
 	display: inline-block;
+	vertical-align: top;
 	margin: @mosaic-element-margin;
 	padding-left: @header-size / 10;
 	padding-right: @header-size / 10;
