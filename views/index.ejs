@@ -29,12 +29,12 @@
 
 		<div id='social-menu' class='social-menu unselectable'>
 			<div class='social-menu-puller pointerable centered'>
-				<i class='fa fa-2x fa-chevron-left'></i>
+				<i class='fa fa-1x fa-bars'></i>
 			</div>
 			<div class='social-menu-items-holder centered'>
-				<i class='fa fa-linkedin-square pointerable social-menu-item'></i>
-				<i class='fa fa-google-plus-square pointerable social-menu-item'></i>
-				<i class='fa fa-facebook-square pointerable social-menu-item'></i>
+				<i class='fa fa-5x fa-linkedin-square pointerable social-menu-item'></i>
+				<i class='fa fa-5x fa-google-plus-square pointerable social-menu-item'></i>
+				<i class='fa fa-5x fa-facebook-square pointerable social-menu-item'></i>
 			</div>
 		</div>
 
@@ -49,17 +49,10 @@
 		}
 		hamburgerMenu.setInvoker(e$('.button-hamburger').element());
 
-		e$('#social-menu .social-menu-puller').on('click', function() {
-			if (e$(this).find('i').hasClass('fa-chevron-left')) {
-				e$(this).find('i').replaceClass('fa-chevron-left', 'fa-chevron-right');
-
-				e$('#social-menu').css('right', 0 + 'px');
-			} else {
-				var moveBy = parseInt(e$('#social-menu .social-menu-items-holder').css('width'));
-
-				e$(this).find('i').replaceClass('fa-chevron-right', 'fa-chevron-left');
-				e$('#social-menu').css('right', (0 - moveBy) + 'px');
-			}
+		e$('#social-menu').on('mouseover', function() {
+			e$('#social-menu').css('right', 0 + 'px');
+		}).on('mouseout', function() {
+			e$('#social-menu').css('right', (0 - parseInt(e$('#social-menu .social-menu-items-holder').css('width'))) + 'px');
 		});
 
 		// Loading mosaic

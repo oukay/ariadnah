@@ -1,6 +1,30 @@
 /**
- * Created by OuKay(ouen.kay.gmail.com)
+ * Slider engine
+ * @param _e
+ * @constructor
  */
+//var Slider = function(_e) {
+//	var e = _e;
+//
+//	this.left = function(_length, _step) {
+//		var inc = _length / _step;
+//
+//		for (var i = 0; i < _step; i++) {
+//			e$(e).css('left', parseInt(e$(e).css('left')) + inc + 'px');
+//			e$(e).css('right', parseInt(e$(e).css('right')) + inc + 'px');
+//		}
+//	};
+//
+//	this.right = function(_length, _step) {
+//		var inc = _length / _step;
+//
+//		for (var i = 0; i < _step; i++) {
+//			e$(e).css('left', parseInt(e$(e).css('left')) - inc + 'px');
+//			e$(e).css('right', parseInt(e$(e).css('right')) - inc + 'px');
+//		}
+//	};
+//
+//};
 
 /**
  * Elements engine
@@ -67,7 +91,11 @@ e$.o = e$.prototype = {
 		this.e.addEventListener(_event, _callback);
 
 		return this;
-	}
+	},
+
+//	slide: function() {
+//		return new Slider(this.e);
+//	}
 };
 
 Init = e$.o.Init = function(_e) {

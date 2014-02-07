@@ -12,7 +12,6 @@
 
 // FIXME: Hardcoded values need to be fixed
 @header-size: 60px;
-@social-font-size: 60px;
 @body-element-padding: 25px;
 @mosaic-element-margin: 25px;
 @body-font-size: 12px;
@@ -51,7 +50,7 @@ div.header-dummy {
 	background-color: @background-color;
 }
 
-// Menu
+// menu
 .main-menu {
 	position: fixed;
 	top: @header-size + @border-width;
@@ -75,7 +74,7 @@ div.header-dummy {
 .social-menu {
 	position: fixed;
 	top: @header-size + @border-width;
-	right: 0px - @social-font-size;
+	right: 0 - @header-size;
 	padding: @header-size / 10 0 @header-size / 10 0;
 	border-radius: @header-size / 2 0px 0px @header-size / 2;
 	background-color: @element-background-color;
@@ -84,7 +83,8 @@ div.header-dummy {
 	border-color: @element-border-color;
 }
 .social-menu-item {
-	font-size: @social-font-size;
+	padding-top: @header-size / 10;
+	padding-bottom: @header-size / 10;
 	display: block;
 	color: @social-color;
 }
@@ -92,11 +92,13 @@ div.header-dummy {
 	color: @social-color-on-hover;
 }
 .social-menu-items-holder {
+	width: @header-size;
 	display: inline-block;
 }
 .social-menu-puller {
+	padding-left: @header-size / 10;
+	padding-right: @header-size / 10;
 	display: inline-block;
-	padding-right: @header-size / 5;
 }
 
 // buttons
@@ -112,7 +114,7 @@ div.header-dummy {
 	display: table;
 }
 
-// Mix
+// mix
 .hoverable:hover {
 	background-color: @element-background-color-on-hover;
 }
