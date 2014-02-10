@@ -1,8 +1,8 @@
 /**
  * Created by OuKay(ouen.kay.gmail.com)
- * Creates Mosaic
+ * Creates MosaicItem
  */
-var Mosaic = function(_div, _loader) {
+var MosaicItem = function(_div, _loader) {
 	// Index of current mosaic element in chain of mosaic elements
 	var index = 0;
 	var div = _div;
@@ -98,9 +98,9 @@ var Mosaic = function(_div, _loader) {
 /**
  * Add css class to inner element
  * @param _class
- * @returns {Mosaic|*}
+ * @returns {MosaicItem|*}
  */
-Mosaic.prototype.addClass = function(_class) {
+MosaicItem.prototype.addClass = function(_class) {
 	this.self.getElement().className += _class;
 
 	return this.self;
@@ -109,9 +109,9 @@ Mosaic.prototype.addClass = function(_class) {
 /**
  * Attach mosaic element to element
  * @param _element
- * @returns {Mosaic|*}
+ * @returns {MosaicItem|*}
  */
-Mosaic.prototype.attachTo = function(_element) {
+MosaicItem.prototype.attachTo = function(_element) {
 	_element.appendChild(this.self.getElement());
 
 	return this.self;
@@ -121,9 +121,9 @@ Mosaic.prototype.attachTo = function(_element) {
  * Add event listener to mosaic element
  * @param _event
  * @param _callback
- * @returns {Mosaic|*}
+ * @returns {MosaicItem|*}
  */
-Mosaic.prototype.addEventListener = function(_event, _callback) {
+MosaicItem.prototype.addEventListener = function(_event, _callback) {
 	this.self.getElement().addEventListener(_event, _callback);
 
 	return this.self;

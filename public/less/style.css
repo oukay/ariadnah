@@ -50,16 +50,14 @@ div.header-dummy {
   position: fixed;
   top: 61px;
   right: -60px;
-  padding: 6px 0 6px 0;
-  border-radius: 30px 0px 0px 30px;
+  padding: 3px 0px 3px 0px;
+  border-radius: 20px 0px 0px 20px;
   background-color: #f9f9f9;
   border-width: 1px 0px 1px 1px;
   border-style: solid none solid solid;
   border-color: #959595;
 }
 .social-menu-item {
-  padding-top: 6px;
-  padding-bottom: 6px;
   display: block;
   color: #959595;
 }
@@ -113,7 +111,7 @@ div.header-dummy {
   vertical-align: middle;
   display: table-cell;
 }
-.mosaic-element {
+.mosaic-item {
   display: inline-block;
   vertical-align: top;
   margin: 25px;
@@ -122,10 +120,8 @@ div.header-dummy {
   border-width: 1px;
   border-style: solid;
   border-color: #959595;
-  height: 250px;
-  line-height: 250px;
-  width: 250px;
-  font-size: 25px;
+  border-radius: 12px 12px 12px 12px;
+  font-size: 20px;
   text-align: center;
   font-weight: bold;
 }

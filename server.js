@@ -2,10 +2,15 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var mongoose = require('mongoose');
 var lessMiddleware = require('less-middleware');
 
 var viewsPath = path.join(__dirname, 'views');
 var publicPath = path.join(__dirname + '/public');
+var dbPath = 'mongodb://localhost/ariadnah';
+
+// Configure db
+mongoose.connect(dbPath);
 
 // Configure app
 var app = express();
@@ -38,7 +43,6 @@ app.configure(function () {
 		var url = '/course/';
 		var i = parseInt(req.url.replace(url, ''));
 
-		require('sleep').usleep(100000);
 		res.send({
 			course :{
 				index: i,

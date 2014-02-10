@@ -75,16 +75,14 @@ div.header-dummy {
 	position: fixed;
 	top: @header-size + @border-width;
 	right: 0 - @header-size;
-	padding: @header-size / 10 0 @header-size / 10 0;
-	border-radius: @header-size / 2 0px 0px @header-size / 2;
+	padding: @header-size / 20 0px @header-size / 20 0px;
+	border-radius: @header-size / 3 0px 0px @header-size / 3;
 	background-color: @element-background-color;
 	border-width: @border-width 0px @border-width @border-width;
 	border-style: solid none solid solid;
 	border-color: @element-border-color;
 }
 .social-menu-item {
-	padding-top: @header-size / 10;
-	padding-bottom: @header-size / 10;
 	display: block;
 	color: @social-color;
 }
@@ -142,9 +140,7 @@ div.header-dummy {
 	vertical-align: middle;
 	display: table-cell;
 }
-
-// FIXME: Size of the mosaics
-.mosaic-element {
+.mosaic-item {
 	display: inline-block;
 	vertical-align: top;
 	margin: @mosaic-element-margin;
@@ -153,10 +149,8 @@ div.header-dummy {
 	border-width: @border-width;
 	border-style: solid;
 	border-color: @element-border-color;
-	height: 250px;
-	line-height: 250px;
-	width: 250px;
-	font-size: 250px / 10;
+	border-radius: @header-size / 5 @header-size / 5 @header-size / 5 @header-size / 5;
+	font-size: @header-size / 3;
 	text-align: center;
 	font-weight: bold;
 }

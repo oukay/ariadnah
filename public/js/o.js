@@ -1,32 +1,4 @@
 /**
- * Slider engine
- * @param _e
- * @constructor
- */
-//var Slider = function(_e) {
-//	var e = _e;
-//
-//	this.left = function(_length, _step) {
-//		var inc = _length / _step;
-//
-//		for (var i = 0; i < _step; i++) {
-//			e$(e).css('left', parseInt(e$(e).css('left')) + inc + 'px');
-//			e$(e).css('right', parseInt(e$(e).css('right')) + inc + 'px');
-//		}
-//	};
-//
-//	this.right = function(_length, _step) {
-//		var inc = _length / _step;
-//
-//		for (var i = 0; i < _step; i++) {
-//			e$(e).css('left', parseInt(e$(e).css('left')) - inc + 'px');
-//			e$(e).css('right', parseInt(e$(e).css('right')) - inc + 'px');
-//		}
-//	};
-//
-//};
-
-/**
  * Elements engine
  * @param _input
  * @returns {e.Init}
@@ -34,7 +6,7 @@
 var e$ = function(_input) {
 	var instance = null;
 
-	if (_input instanceof HTMLElement) {
+	if (_input instanceof HTMLElement || (_input instanceof Object && _input.window === _input)) {
 		instance = new e$.o.Init(_input);
 	} else {
 		try {
@@ -93,9 +65,9 @@ e$.o = e$.prototype = {
 		return this;
 	},
 
-//	slide: function() {
-//		return new Slider(this.e);
-//	}
+	append: function(_element) {
+		this.e.appendChild(_element);
+	}
 };
 
 Init = e$.o.Init = function(_e) {

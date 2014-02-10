@@ -16,7 +16,8 @@
 		<script src='/js/Menu.js'></script>
 		<script src='/js/Hamburger.js'></script>
 		<script src='/js/Loader.js'></script>
-		<script src='/js/Mosaic.js'></script>
+		<script src='/js/MosaicHolder.js'></script>
+		<script src='/js/MosaicItem.js'></script>
 	</head>
 
 	<body>
@@ -56,7 +57,8 @@
 		});
 
 		// Loading mosaic
-		var mosaics = [];
+		var mosaicHolder = new MosaicHolder(e$('#body-div').element());
+
 		var getNextMosaicsSuccess = function(_element, _response) {
 			_element.setText(_response.course.name);
 			if (!_response.course.last) {
@@ -67,19 +69,8 @@
 			console.log(_response);
 		};
 		var getNextMosaic = function(_index) {
-			/*
-			 * TODO: Remove hardcoding
-			 * Next logic applies:
-			 * - Max box size is 250px 250px
-			 * - Min box size is 200px 200px
-			 * - outer padding is 25px
-			 * - box margin is 25px
-			 * - box border is 1px
-			 */
-			var mosaic = new Mosaic(NONE, NONE).
-					setIndex(_index).addClass('mosaic-element hoverable pointerable').
-					attachTo(e$('#body-div').element());
-			mosaics.push(mosaic);
+			var mosaic = new MosaicItem(NONE, NONE).setIndex(_index).addClass('mosaic-item hoverable pointerable');
+			mosaicHolder.addItem(mosaic.getElement());
 
 			new Ajax(mosaic).get(
 					'/course/' + _index,
@@ -91,5 +82,10 @@
 		};
 		// Call for loading first mosaic element
 		getNextMosaic(0);
+
+		//window.onresize = function() {alert('xxx')};
+		e$(window).on('resize', function() {
+			mosaicHolder.adjustItems();
+		});
 	</script>
 </html>
