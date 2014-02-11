@@ -3,9 +3,22 @@
 @text-color: @element-border-color;
 @element-background-color: #f9f9f9;
 @element-background-color-on-hover: #d9d9d9;
-@social-color: @element-border-color;
-@social-color-on-hover: #747474;
+@icon-color: @element-border-color;
+@icon-on-hover-color: #333333;
+@icon-linkedin-on-hover-color: #4875b4;
+@icon-google-plus-on-hover-color: #c63d2d;
+@icon-facebook-on-hover-color: #3b5998;
 @background-color: #ffffff;
+
+/*
+Flickr #FE0883
+Foursquare #8FD400
+Instagram #4E433C
+Tumblr #2B4964
+Twitter #33CCFF
+Vimeo #86B32D
+Youtube #FF3333
+*/
 
 @border-width: 1px;
 @no-border-width: 0px;
@@ -71,32 +84,27 @@ div.header-dummy {
 	border-style: none none solid none;
 	border-color: @element-border-color;
 }
-.social-menu {
-	position: fixed;
-	top: @header-size + @border-width;
-	right: 0 - @header-size;
-	padding: @header-size / 20 0px @header-size / 20 0px;
-	border-radius: @header-size / 3 0px 0px @header-size / 3;
+
+.drop-down-menu {
+	border-radius: 0px 0px @header-size / 5 @header-size / 5;
 	background-color: @element-background-color;
-	border-width: @border-width 0px @border-width @border-width;
-	border-style: solid none solid solid;
 	border-color: @element-border-color;
 }
-.social-menu-item {
+.drop-down-menu-item {
 	display: block;
-	color: @social-color;
+	padding: @header-size / 5;
+	color: @icon-color;
 }
-.social-menu-item:hover {
-	color: @social-color-on-hover;
-}
-.social-menu-items-holder {
-	width: @header-size;
+.drop-down-menu-items-holder {
+	width: @header-size - @border-width;
 	display: inline-block;
 }
-.social-menu-puller {
-	padding-left: @header-size / 10;
-	padding-right: @header-size / 10;
-	display: inline-block;
+.sign-in-menu {
+	position: fixed;
+	border-style: solid none solid solid;
+	border-width: @border-width 0px @border-width @border-width;
+	top: @header-size + @border-width;
+	right: 0
 }
 
 // buttons
@@ -106,15 +114,51 @@ div.header-dummy {
 	border-color: @element-border-color;
 	float: left;
 }
-.button-hamburger {
+.button-right {
+	border-left: @border-width;
+	border-left-style: solid;
+	border-color: @element-border-color;
+	float: right;
+}
+.button-header {
 	width: @header-size;
 	height: @header-size;
 	display: table;
 }
 
+.mosaic-item {
+	display: inline-block;
+	vertical-align: top;
+	margin: @mosaic-element-margin;
+	padding-left: @header-size / 10;
+	padding-right: @header-size / 10;
+	border-width: @border-width;
+	border-style: solid;
+	border-color: @element-border-color;
+	border-radius: @header-size / 5 @header-size / 5 @header-size / 5 @header-size / 5;
+	font-size: @header-size / 3;
+	text-align: center;
+	font-weight: bold;
+}
+
 // mix
 .hoverable:hover {
 	background-color: @element-background-color-on-hover;
+}
+.hoverable-icon:hover {
+	color: @icon-on-hover-color;
+}
+.hoverable-text:hover {
+	color: @icon-on-hover-color;
+}
+.hoverable-icon.fa-linkedin:hover {
+	color: @icon-linkedin-on-hover-color;
+}
+.hoverable-icon.fa-google-plus:hover {
+	color: @icon-google-plus-on-hover-color;
+}
+.hoverable-icon.fa-facebook:hover {
+	color: @icon-facebook-on-hover-color;
 }
 .pointerable:hover {
 	cursor: pointer;
@@ -140,17 +184,6 @@ div.header-dummy {
 	vertical-align: middle;
 	display: table-cell;
 }
-.mosaic-item {
-	display: inline-block;
-	vertical-align: top;
-	margin: @mosaic-element-margin;
-	padding-left: @header-size / 10;
-	padding-right: @header-size / 10;
-	border-width: @border-width;
-	border-style: solid;
-	border-color: @element-border-color;
-	border-radius: @header-size / 5 @header-size / 5 @header-size / 5 @header-size / 5;
-	font-size: @header-size / 3;
-	text-align: center;
-	font-weight: bold;
+.non-displayable {
+	display: none;
 }

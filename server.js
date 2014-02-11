@@ -35,10 +35,31 @@ app.configure(function () {
 	 */
 	// Index page
 	app.get('/', function(req, res) {
-		res.render('index', {'title': 'ariadnah'});
+		res.render('index', {'title': 'ariadnah', 'logged': false});
 	});
 
-	// Get course
+	// user cabinet
+	app.get('/user/cabinet', function(req, res) {
+		res.send({
+			info :'/user/cabinet'
+		});
+	});
+
+	// user cabinet
+	app.get('/user/out', function(req, res) {
+		res.send({
+			info :'/user/out'
+		});
+	});
+
+	// user cabinet
+	app.get('/user/in/:service', function(req, res) {
+		res.send({
+			info :'/user/in/' + req.params.service
+		});
+	});
+
+	// course
 	app.get('/course/:i', function(req, res) {
 		var url = '/course/';
 		var i = parseInt(req.url.replace(url, ''));
@@ -47,7 +68,7 @@ app.configure(function () {
 			course :{
 				index: i,
 				name: '{Course' + i + '}',
-				last: i > 5
+				last: i > 25
 			}
 		});
 	});

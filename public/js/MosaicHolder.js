@@ -27,14 +27,6 @@ var MosaicHolder = function(_holder) {
 		return this.adjustItem(_item);
 	};
 
-	this.getItem = function(_index) {
-		return items[_index];
-	};
-
-	this.getItems = function() {
-		return items;
-	};
-
 	this.adjustItem = function(_item) {
 		// Count it only for the first time as these values are not going to be changed
 		if (!extraSize) {
@@ -50,8 +42,6 @@ var MosaicHolder = function(_holder) {
 			holderWidth = e$(holder).css('width');
 			itemsInRow = Math.floor(parseInt(holderWidth) / (extraSize + MAX_MOSAIC_SIZE));
 			itemSize = Math.floor(parseInt(holderWidth) / itemsInRow - extraSize);
-
-			this.adjustItems();
 		}
 
 		e$(_item).css('width', itemSize + 'px');

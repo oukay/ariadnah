@@ -44,6 +44,14 @@ e$.o = e$.prototype = {
 		return this.e.className.indexOf(_class) != -1;
 	},
 
+	addClass: function(_class) {
+		return this.e.className = this.e.className + ' ' + _class;
+	},
+
+	removeClass: function(_class) {
+		this.replaceClass(_class, '');
+	},
+
 	replaceClass: function(_replacement, _replacer) {
 		var classes = this.e.className.trim().split(' ');
 		var value = '';
@@ -60,7 +68,9 @@ e$.o = e$.prototype = {
 	},
 
 	on: function(_event, _callback) {
-		this.e.addEventListener(_event, _callback);
+		if (this.e) {
+			this.e.addEventListener(_event, _callback);
+		}
 
 		return this;
 	},

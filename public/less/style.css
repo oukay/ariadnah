@@ -1,3 +1,12 @@
+/*
+Flickr #FE0883
+Foursquare #8FD400
+Instagram #4E433C
+Tumblr #2B4964
+Twitter #33CCFF
+Vimeo #86B32D
+Youtube #FF3333
+*/
 body {
   margin: 0px;
   padding: 0px;
@@ -46,32 +55,26 @@ div.header-dummy {
   border-style: none none solid none;
   border-color: #959595;
 }
-.social-menu {
-  position: fixed;
-  top: 61px;
-  right: -60px;
-  padding: 3px 0px 3px 0px;
-  border-radius: 20px 0px 0px 20px;
+.drop-down-menu {
+  border-radius: 0px 0px 12px 12px;
   background-color: #f9f9f9;
-  border-width: 1px 0px 1px 1px;
-  border-style: solid none solid solid;
   border-color: #959595;
 }
-.social-menu-item {
+.drop-down-menu-item {
   display: block;
+  padding: 12px;
   color: #959595;
 }
-.social-menu-item:hover {
-  color: #747474;
-}
-.social-menu-items-holder {
-  width: 60px;
+.drop-down-menu-items-holder {
+  width: 59px;
   display: inline-block;
 }
-.social-menu-puller {
-  padding-left: 6px;
-  padding-right: 6px;
-  display: inline-block;
+.sign-in-menu {
+  position: fixed;
+  border-style: solid none solid solid;
+  border-width: 1px 0px 1px 1px;
+  top: 61px;
+  right: 0;
 }
 .button-left {
   border-right: 1px;
@@ -79,13 +82,48 @@ div.header-dummy {
   border-color: #959595;
   float: left;
 }
-.button-hamburger {
+.button-right {
+  border-left: 1px;
+  border-left-style: solid;
+  border-color: #959595;
+  float: right;
+}
+.button-header {
   width: 60px;
   height: 60px;
   display: table;
 }
+.mosaic-item {
+  display: inline-block;
+  vertical-align: top;
+  margin: 25px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #959595;
+  border-radius: 12px 12px 12px 12px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
 .hoverable:hover {
   background-color: #d9d9d9;
+}
+.hoverable-icon:hover {
+  color: #333333;
+}
+.hoverable-text:hover {
+  color: #333333;
+}
+.hoverable-icon.fa-linkedin:hover {
+  color: #4875b4;
+}
+.hoverable-icon.fa-google-plus:hover {
+  color: #c63d2d;
+}
+.hoverable-icon.fa-facebook:hover {
+  color: #3b5998;
 }
 .pointerable:hover {
   cursor: pointer;
@@ -111,17 +149,6 @@ div.header-dummy {
   vertical-align: middle;
   display: table-cell;
 }
-.mosaic-item {
-  display: inline-block;
-  vertical-align: top;
-  margin: 25px;
-  padding-left: 6px;
-  padding-right: 6px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #959595;
-  border-radius: 12px 12px 12px 12px;
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
+.non-displayable {
+  display: none;
 }

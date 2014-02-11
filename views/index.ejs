@@ -21,13 +21,39 @@
 	</head>
 
 	<body>
-		<div id='header' class='header header-fixed full-width z-max unselectable'>
-			<div class='button-left button-hamburger hoverable pointerable'>
-				<i class='fa fa-2x fa-bars centered'></i>
+		<div class='header header-fixed full-width unselectable'>
+			<div id='hamburger' class='button-left button-header pointerable'>
+				<i class='fa fa-2x fa-bars hoverable-icon centered'></i>
+			</div>
+			<div id='cabinet' class='button-right button-header pointerable'>
+				<% if(logged) { %>
+					<i class='fa fa-3x fa-sign-out hoverable-icon centered'></i>
+				<% } else { %>
+					<i class='fa fa-3x fa-sign-in hoverable-icon centered'></i>
+				<% } %>
 			</div>
 		</div>
-		<div id='header-div-dummy' class='header-dummy'></div>
+		<div class='header-dummy'></div>
 
+		<div id='main-menu' class='main-menu full-height unselectable non-displayable'>
+			<% for (var i = 0; i < 5; i++) { %>
+				<div class='main-menu-item hoverable-text pointerable'>{Hamburger<%= i %>}</div>
+			<% } %>
+		</div>
+
+		<div id='cabinet-menu' class='drop-down-menu sign-in-menu unselectable non-displayable'>
+			<div class='drop-down-menu-items-holder centered'>
+				<% if(logged) { %>
+					<i class='fa fa-3x fa-user drop-down-menu-item hoverable-icon pointerable'></i>
+				<% } else { %>
+					<i class='fa fa-3x fa-linkedin drop-down-menu-item hoverable-icon pointerable'></i>
+					<i class='fa fa-3x fa-google-plus drop-down-menu-item hoverable-icon pointerable'></i>
+					<i class='fa fa-3x fa-facebook drop-down-menu-item hoverable-icon pointerable'></i>
+				<% } %>
+			</div>
+		</div>
+
+		<!--
 		<div id='social-menu' class='social-menu unselectable'>
 			<div class='social-menu-puller pointerable centered'>
 				<i class='fa fa-1x fa-bars'></i>
@@ -38,22 +64,115 @@
 				<i class='fa fa-5x fa-facebook-square pointerable social-menu-item'></i>
 			</div>
 		</div>
+		-->
 
 		<div id='body-div' class='body'></div>
 	</body>
 
 	<script>
-		var hamburgerMenu = new Menu(NONE).addClass('main-menu full-height unselectable').display(false).
-				attachTo(e$('#body-div').element());
-		for (var i = 0; i < 4; i++) {
-			hamburgerMenu.addItem(new MenuItem(NONE, '{Hamburger' + i + '}').addClass('main-menu-item hoverable pointerable'));
-		}
-		hamburgerMenu.setInvoker(e$('.button-hamburger').element());
+		e$('#hamburger').on('click', function() {
+			if (e$('#main-menu').hasClass('non-displayable')) {
+				e$('#main-menu').removeClass('non-displayable');
+			} else {
+				e$('#main-menu').addClass('non-displayable');
+			}
+		});
 
-		e$('#social-menu').on('mouseover', function() {
-			e$('#social-menu').css('right', 0 + 'px');
+		e$('#cabinet').on('mouseover', function() {
+			e$('#cabinet-menu').removeClass('non-displayable');
 		}).on('mouseout', function() {
-			e$('#social-menu').css('right', (0 - parseInt(e$('#social-menu .social-menu-items-holder').css('width'))) + 'px');
+			if (!e$('#cabinet-menu:hover').element()) {
+				e$('#cabinet-menu').addClass('non-displayable');
+			}
+		});
+
+		e$('#cabinet-menu').on('mouseout', function() {
+			if (!e$('#cabinet-menu:hover').element()) {
+				e$('#cabinet-menu').addClass('non-displayable');
+			}
+		});
+
+		e$('#cabinet').find('.fa-sign-in').on('click', function() {
+			if (e$('#cabinet-menu').hasClass('non-displayable')) {
+				e$('#cabinet-menu').removeClass('non-displayable');
+			} else {
+				e$('#cabinet-menu').addClass('non-displayable');
+			}
+		});
+
+		e$('#cabinet').find('.fa-sign-out').on('click', function() {
+			new Ajax(e$('#body-div').element()).get(
+					URL_USER_OUT,
+					NONE,
+					NONE,
+					function(_element, _response) {
+						_element.textContent = _response.info;
+						history.pushState(NONE, URL_USER_OUT, URL_USER_OUT);
+					},
+					function(_element, _response) {
+						console.log(_response);
+					}
+			);
+		});
+
+		e$('#cabinet-menu').find('.fa-user').on('click', function() {
+			new Ajax(e$('#body-div').element()).get(
+					URL_USER_CABINET,
+					NONE,
+					NONE,
+					function(_element, _response) {
+						_element.textContent = _response.info;
+						history.pushState(NONE, URL_USER_CABINET, URL_USER_CABINET);
+					},
+					function(_element, _response) {
+						console.log(_response);
+					}
+			);
+		});
+
+		e$('#cabinet-menu').find('.fa-linkedin').on('click', function() {
+			new Ajax(e$('#body-div').element()).get(
+					URL_USER_IN_LINKEDIN,
+					NONE,
+					NONE,
+					function(_element, _response) {
+						_element.textContent = _response.info;
+						history.pushState(NONE, URL_USER_IN_LINKEDIN, URL_USER_IN_LINKEDIN);
+					},
+					function(_element, _response) {
+						console.log(_response);
+					}
+			);
+		});
+
+		e$('#cabinet-menu').find('.fa-google-plus').on('click', function() {
+			new Ajax(e$('#body-div').element()).get(
+					URL_USER_IN_GOOGLE_PLUS,
+					NONE,
+					NONE,
+					function(_element, _response) {
+						_element.textContent = _response.info;
+						history.pushState(NONE, URL_USER_IN_GOOGLE_PLUS, URL_USER_IN_GOOGLE_PLUS);
+					},
+					function(_element, _response) {
+						console.log(_response);
+					}
+			);
+		});
+
+		e$('#cabinet-menu').find('.fa-facebook').on('click', function() {
+			new Ajax(e$('#body-div').element()).get(
+					URL_USER_IN_FACEBOOK,
+					NONE,
+					NONE,
+					function(_element, _response) {
+						_element.textContent = _response.info;
+						history.pushState(NONE, URL_USER_IN_FACEBOOK, URL_USER_IN_FACEBOOK);
+					},
+					function(_element, _response) {
+						console.log(_response);
+					}
+			);
 		});
 
 		// Loading mosaic
@@ -63,10 +182,9 @@
 			_element.setText(_response.course.name);
 			if (!_response.course.last) {
 				_element.getNext(getNextMosaic);
+			} else {
+				mosaicHolder.adjustItems();
 			}
-		};
-		var getNextMosaicsError = function(_element, _response) {
-			console.log(_response);
 		};
 		var getNextMosaic = function(_index) {
 			var mosaic = new MosaicItem(NONE, NONE).setIndex(_index).addClass('mosaic-item hoverable pointerable');
@@ -77,13 +195,14 @@
 					NONE,
 					NONE,
 					getNextMosaicsSuccess,
-					getNextMosaicsError
+					function(_element, _response) {
+						console.log(_response);
+					}
 			);
 		};
 		// Call for loading first mosaic element
 		getNextMosaic(0);
 
-		//window.onresize = function() {alert('xxx')};
 		e$(window).on('resize', function() {
 			mosaicHolder.adjustItems();
 		});
